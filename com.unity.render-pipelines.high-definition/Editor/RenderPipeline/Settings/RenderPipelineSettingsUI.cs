@@ -122,6 +122,12 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
             if(UnityEngine.SystemInfo.supportsRayTracing)
             {
                 EditorGUILayout.PropertyField(d.supportRayTracing, _.GetContent("Support Realtime Raytracing."));
+                using (new EditorGUI.DisabledScope(!d.supportRayTracing.boolValue))
+                {
+                    ++EditorGUI.indentLevel;
+                    EditorGUILayout.PropertyField(d.defaultLayerMask, _.GetContent("Default Raytracing Sub-scene"));
+                    --EditorGUI.indentLevel;
+                }
             }
             else
 #endif

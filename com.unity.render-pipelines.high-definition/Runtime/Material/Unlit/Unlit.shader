@@ -107,10 +107,6 @@ Shader "HDRenderPipeline/Unlit"
 
     #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/UnlitProperties.hlsl"
 
-    // All our shaders use same name for entry point
-    #pragma vertex Vert
-    #pragma fragment Frag
-
     ENDHLSL
 
     SubShader
@@ -135,6 +131,10 @@ Shader "HDRenderPipeline/Unlit"
 
             #define SHADERPASS SHADERPASS_DEPTH_ONLY
             #define SCENESELECTIONPASS // This will drive the output of the scene selection shader
+            #pragma vertex Vert
+            #pragma fragment Frag
+
+
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Material.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/Unlit.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/ShaderPass/UnlitDepthPass.hlsl"
@@ -159,6 +159,9 @@ Shader "HDRenderPipeline/Unlit"
             #pragma multi_compile _ WRITE_MSAA_DEPTH
 
             #define SHADERPASS SHADERPASS_DEPTH_ONLY
+            #pragma vertex Vert
+            #pragma fragment Frag
+
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Material.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/Unlit.hlsl"
 			#include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/ShaderPass/UnlitDepthPass.hlsl"
@@ -191,6 +194,9 @@ Shader "HDRenderPipeline/Unlit"
             #pragma multi_compile _ WRITE_MSAA_DEPTH
             
             #define SHADERPASS SHADERPASS_VELOCITY
+            #pragma vertex Vert
+            #pragma fragment Frag
+
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Material.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/Unlit.hlsl"
@@ -220,6 +226,9 @@ Shader "HDRenderPipeline/Unlit"
             #endif
 
             #define SHADERPASS SHADERPASS_FORWARD_UNLIT
+            #pragma vertex Vert
+            #pragma fragment Frag
+
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Material.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/Unlit.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/ShaderPass/UnlitSharePass.hlsl"
@@ -245,6 +254,9 @@ Shader "HDRenderPipeline/Unlit"
             // both direct and indirect lighting) will hand up in the "regular" lightmap->LIGHTMAP_ON.
 
             #define SHADERPASS SHADERPASS_LIGHT_TRANSPORT
+            #pragma vertex Vert
+            #pragma fragment Frag
+
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Material.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/Unlit.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/ShaderPass/UnlitSharePass.hlsl"
@@ -268,6 +280,9 @@ Shader "HDRenderPipeline/Unlit"
             HLSLPROGRAM
 
             #define SHADERPASS SHADERPASS_DISTORTION
+            #pragma vertex Vert
+            #pragma fragment Frag
+
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Material.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/Unlit.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Unlit/ShaderPass/UnlitDistortionPass.hlsl"
@@ -278,5 +293,29 @@ Shader "HDRenderPipeline/Unlit"
         }
     }
 
+    /*
+    SubShader
+    {
+        Pass
+        {
+            Name "RTRaytrace_Reflections"
+            Tags{ "LightMode" = "ReflectionDXR" }
+
+            HLSLPROGRAM
+
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/Raytracing/RaytracingIntersection.hlsl"
+
+            #pragma raytracing test      
+
+            [shader("closesthit")]
+            void ClosestHitMain(inout RayIntersection rayIntersection : SV_RayPayload, AttributeData attribs : SV_IntersectionAttributes)
+            {
+                rayIntersection.color = float3(1.0f, 0.5f, 0.0f);
+            }
+
+            ENDHLSL
+        }
+    }
+    */
     CustomEditor "Experimental.Rendering.HDPipeline.UnlitGUI"
 }

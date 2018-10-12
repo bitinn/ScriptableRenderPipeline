@@ -91,6 +91,11 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             public Shader depthValuesPS;
             public Shader aoResolvePS;
             public Shader colorResolvePS;
+
+#if ENABLE_RAYTRACING
+            // Raytracing shaders
+            public RaytracingShader reflectionRaytracing;
+#endif
         }
 
         [Serializable]

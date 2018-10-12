@@ -71,7 +71,8 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
         readonly SharedRTManager m_SharedRTManager = new SharedRTManager();
 
 #if ENABLE_RAYTRACING
-        readonly HDRaytracingManager m_RayTracingManager = new HDRaytracingManager();
+        public HDRaytracingManager m_RayTracingManager = new HDRaytracingManager();
+        readonly HDRaytracingReflections m_RaytracingReflections = new HDRaytracingReflections();
 #endif
 
         // Renderer Bake configuration can vary depends on if shadow mask is enabled or no
@@ -340,7 +341,8 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
 
             m_MRTWithSSS = new RenderTargetIdentifier[2 + m_SSSBufferManager.sssBufferCount];
 #if ENABLE_RAYTRACING
-            m_RayTracingManager.InitAccelerationStructures();
+            m_RayTracingManager.Init(m_Asset.renderPipelineSettings);
+            m_RaytracingReflections.Init(m_Asset, m_SkyManager, m_RayTracingManager, m_SharedRTManager);
 #endif
         }
 
@@ -599,7 +601,8 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             base.Dispose(disposing);
 
 #if ENABLE_RAYTRACING
-            m_RayTracingManager.ReleaseAccelerationStructures();
+            m_RaytracingReflections.Release();
+            m_RayTracingManager.Release();
 #endif
             m_DebugDisplaySettings.UnregisterDebug();
 
@@ -818,6 +821,10 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                     m_Time = t;
                 }
             }
+
+#if ENABLE_RAYTRACING
+            m_RayTracingManager.UpdateAccelerationStructures();
+#endif
 
             // TODO: Render only visible probes
             var isAnyCamerasAReflectionCamera = false;
@@ -2196,76 +2203,85 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             if (!hdCamera.frameSettings.enableSSR)
                 return;
 
-            var cs = m_ScreenSpaceReflectionsCS;
-
-            var previousColorPyramid = hdCamera.GetPreviousFrameRT((int)HDCameraFrameHistoryType.ColorBufferMipChain);
-
-            Vector2Int previousColorPyramidSize = new Vector2Int(previousColorPyramid.rt.width, previousColorPyramid.rt.height);
-
-            int w = hdCamera.actualWidth;
-            int h = hdCamera.actualHeight;
-
-            using (new ProfilingSample(cmd, "SSR - Tracing", CustomSamplerId.SsrTracing.GetSampler()))
+#if ENABLE_RAYTRACING
+            if(m_Asset.renderPipelineSettings.supportRayTracing)
             {
-                var volumeSettings = VolumeManager.instance.stack.GetComponent<ScreenSpaceReflection>();
-
-                if (!volumeSettings) volumeSettings = ScreenSpaceReflection.@default;
-
-                int kernel = m_SsrTracingKernel;
-
-                float n = hdCamera.camera.nearClipPlane;
-                float f = hdCamera.camera.farClipPlane;
-
-                float thickness      = volumeSettings.depthBufferThickness;
-                float thicknessScale = 1.0f / (1.0f + thickness);
-                float thicknessBias  = -n / (f - n) * (thickness * thicknessScale);
-
-                HDUtils.PackedMipChainInfo info = m_SharedRTManager.GetDepthBufferMipChainInfo();
-
-                float roughnessFadeStart             = 1 - volumeSettings.smoothnessFadeStart;
-                float roughnessFadeEnd               = 1 - volumeSettings.minSmoothness;
-                float roughnessFadeLength            = roughnessFadeEnd - roughnessFadeStart;
-                float roughnessFadeEndTimesRcpLength = (roughnessFadeLength != 0) ? (roughnessFadeEnd * (1.0f / roughnessFadeLength)) : 1;
-                float roughnessFadeRcpLength         = (roughnessFadeLength != 0) ? (1.0f / roughnessFadeLength) : 0;
-                float edgeFadeRcpLength              = Mathf.Min(1.0f / volumeSettings.screenFadeDistance, float.MaxValue);
-
-                cmd.SetComputeIntParam(  cs, HDShaderIDs._SsrIterLimit,                      volumeSettings.rayMaxIterations);
-                cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrThicknessScale,                 thicknessScale);
-                cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrThicknessBias,                  thicknessBias);
-                cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrRoughnessFadeEnd,               roughnessFadeEnd);
-                cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrRoughnessFadeRcpLength,         roughnessFadeRcpLength);
-                cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrRoughnessFadeEndTimesRcpLength, roughnessFadeEndTimesRcpLength);
-                cmd.SetComputeIntParam(  cs, HDShaderIDs._SsrDepthPyramidMaxMip,             info.mipLevelCount);
-                cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrEdgeFadeRcpLength,              edgeFadeRcpLength);
-                cmd.SetComputeIntParam(  cs, HDShaderIDs._SsrReflectsSky,                    volumeSettings.reflectSky ? 1 : 0);
-                cmd.SetComputeIntParam(  cs, HDShaderIDs._SsrStencilExclusionValue,          (int)StencilBitMask.DoesntReceiveSSR);
-                cmd.SetComputeVectorParam(cs, HDShaderIDs._ColorPyramidUvScaleAndLimitPrevFrame, HDUtils.ComputeUvScaleAndLimit(hdCamera.viewportSizePrevFrame, previousColorPyramidSize));
-
-                // cmd.SetComputeTextureParam(cs, kernel, "_SsrDebugTexture",    m_SsrDebugTexture);
-                cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._SsrHitPointTexture, m_SsrHitPointTexture);
-                cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._StencilTexture, m_SharedRTManager.GetStencilBufferCopy());
-
-                cmd.SetComputeBufferParam(cs, kernel, HDShaderIDs._SsrDepthPyramidMipOffsets, info.GetOffsetBufferData(m_DepthPyramidMipLevelOffsetsBuffer));
-
-                cmd.DispatchCompute(cs, kernel, HDUtils.DivRoundUp(w, 8), HDUtils.DivRoundUp(h, 8), 1);
+                m_RaytracingReflections.RenderReflections(hdCamera, cmd, m_SsrLightingTexture);
             }
-
-            using (new ProfilingSample(cmd, "SSR - Reprojection", CustomSamplerId.SsrReprojection.GetSampler()))
+            else
+#endif
             {
-                int kernel = m_SsrReprojectionKernel;
+                var cs = m_ScreenSpaceReflectionsCS;
 
-                // cmd.SetComputeTextureParam(cs, kernel, "_SsrDebugTexture",    m_SsrDebugTexture);
-                cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._SsrHitPointTexture,   m_SsrHitPointTexture);
-                cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._SsrLightingTextureRW, m_SsrLightingTexture);
-                cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._ColorPyramidTexture,  previousColorPyramid);
+                var previousColorPyramid = hdCamera.GetPreviousFrameRT((int)HDCameraFrameHistoryType.ColorBufferMipChain);
 
-                cmd.DispatchCompute(cs, kernel, HDUtils.DivRoundUp(w, 8), HDUtils.DivRoundUp(h, 8), 1);
-            }
+                Vector2Int previousColorPyramidSize = new Vector2Int(previousColorPyramid.rt.width, previousColorPyramid.rt.height);
 
-            if (!hdCamera.colorPyramidHistoryIsValid)
-            {
-                cmd.SetGlobalTexture(HDShaderIDs._SsrLightingTexture, RuntimeUtilities.transparentTexture);
-                hdCamera.colorPyramidHistoryIsValid = true; // For the next frame...
+                int w = hdCamera.actualWidth;
+                int h = hdCamera.actualHeight;
+
+                using (new ProfilingSample(cmd, "SSR - Tracing", CustomSamplerId.SsrTracing.GetSampler()))
+                {
+                    var volumeSettings = VolumeManager.instance.stack.GetComponent<ScreenSpaceReflection>();
+
+                    if (!volumeSettings) volumeSettings = ScreenSpaceReflection.@default;
+
+                    int kernel = m_SsrTracingKernel;
+
+                    float n = hdCamera.camera.nearClipPlane;
+                    float f = hdCamera.camera.farClipPlane;
+
+                    float thickness      = volumeSettings.depthBufferThickness;
+                    float thicknessScale = 1.0f / (1.0f + thickness);
+                    float thicknessBias  = -n / (f - n) * (thickness * thicknessScale);
+
+                    HDUtils.PackedMipChainInfo info = m_SharedRTManager.GetDepthBufferMipChainInfo();
+
+                    float roughnessFadeStart             = 1 - volumeSettings.smoothnessFadeStart;
+                    float roughnessFadeEnd               = 1 - volumeSettings.minSmoothness;
+                    float roughnessFadeLength            = roughnessFadeEnd - roughnessFadeStart;
+                    float roughnessFadeEndTimesRcpLength = (roughnessFadeLength != 0) ? (roughnessFadeEnd * (1.0f / roughnessFadeLength)) : 1;
+                    float roughnessFadeRcpLength         = (roughnessFadeLength != 0) ? (1.0f / roughnessFadeLength) : 0;
+                    float edgeFadeRcpLength              = Mathf.Min(1.0f / volumeSettings.screenFadeDistance, float.MaxValue);
+
+                    cmd.SetComputeIntParam(  cs, HDShaderIDs._SsrIterLimit,                      volumeSettings.rayMaxIterations);
+                    cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrThicknessScale,                 thicknessScale);
+                    cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrThicknessBias,                  thicknessBias);
+                    cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrRoughnessFadeEnd,               roughnessFadeEnd);
+                    cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrRoughnessFadeRcpLength,         roughnessFadeRcpLength);
+                    cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrRoughnessFadeEndTimesRcpLength, roughnessFadeEndTimesRcpLength);
+                    cmd.SetComputeIntParam(  cs, HDShaderIDs._SsrDepthPyramidMaxMip,             info.mipLevelCount);
+                    cmd.SetComputeFloatParam(cs, HDShaderIDs._SsrEdgeFadeRcpLength,              edgeFadeRcpLength);
+                    cmd.SetComputeIntParam(  cs, HDShaderIDs._SsrReflectsSky,                    volumeSettings.reflectSky ? 1 : 0);
+                    cmd.SetComputeIntParam(  cs, HDShaderIDs._SsrStencilExclusionValue,          (int)StencilBitMask.DoesntReceiveSSR);
+                    cmd.SetComputeVectorParam(cs, HDShaderIDs._ColorPyramidUvScaleAndLimitPrevFrame, HDUtils.ComputeUvScaleAndLimit(hdCamera.viewportSizePrevFrame, previousColorPyramidSize));
+
+                    // cmd.SetComputeTextureParam(cs, kernel, "_SsrDebugTexture",    m_SsrDebugTexture);
+                    cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._SsrHitPointTexture, m_SsrHitPointTexture);
+                    cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._StencilTexture, m_SharedRTManager.GetStencilBufferCopy());
+
+                    cmd.SetComputeBufferParam(cs, kernel, HDShaderIDs._SsrDepthPyramidMipOffsets, info.GetOffsetBufferData(m_DepthPyramidMipLevelOffsetsBuffer));
+
+                    cmd.DispatchCompute(cs, kernel, HDUtils.DivRoundUp(w, 8), HDUtils.DivRoundUp(h, 8), 1);
+                }
+
+                using (new ProfilingSample(cmd, "SSR - Reprojection", CustomSamplerId.SsrReprojection.GetSampler()))
+                {
+                    int kernel = m_SsrReprojectionKernel;
+
+                    // cmd.SetComputeTextureParam(cs, kernel, "_SsrDebugTexture",    m_SsrDebugTexture);
+                    cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._SsrHitPointTexture,   m_SsrHitPointTexture);
+                    cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._SsrLightingTextureRW, m_SsrLightingTexture);
+                    cmd.SetComputeTextureParam(cs, kernel, HDShaderIDs._ColorPyramidTexture,  previousColorPyramid);
+
+                    cmd.DispatchCompute(cs, kernel, HDUtils.DivRoundUp(w, 8), HDUtils.DivRoundUp(h, 8), 1);
+                }
+
+                if (!hdCamera.colorPyramidHistoryIsValid)
+                {
+                    cmd.SetGlobalTexture(HDShaderIDs._SsrLightingTexture, RuntimeUtilities.transparentTexture);
+                    hdCamera.colorPyramidHistoryIsValid = true; // For the next frame...
+                }
             }
 
             PushFullScreenDebugTexture(hdCamera, cmd, m_SsrLightingTexture, FullScreenDebugMode.ScreenSpaceReflections);
