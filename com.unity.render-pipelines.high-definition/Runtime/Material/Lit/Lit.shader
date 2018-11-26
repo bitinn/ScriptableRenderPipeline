@@ -755,7 +755,6 @@ Shader "HDRenderPipeline/Lit"
         }
     }
 
-    /*
     SubShader
     {
         Pass
@@ -765,20 +764,60 @@ Shader "HDRenderPipeline/Lit"
 
             HLSLPROGRAM
 
-            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/Raytracing/RaytracingIntersection.hlsl"
-
             #pragma raytracing test      
 
-            [shader("closesthit")]
-            void ClosestHitMain(inout RayIntersection rayIntersection : SV_RayPayload, AttributeData attributeData : SV_IntersectionAttributes)
-            {
-                rayIntersection.color = float3(1.0, 1.0, 0.0);
-            }
+            #pragma multi_compile _ LIGHTMAP_ON
+            #pragma multi_compile _ DIRLIGHTMAP_COMBINED
+            #pragma multi_compile _ DYNAMICLIGHTMAP_ON
+            
+             // We use the low shadow maps for raytracing
+            #define PUNCTUAL_SHADOW_LOW
+            #define DIRECTIONAL_SHADOW_LOW
+
+            #define INTERSECTION_SHADING
+
+            #include "Packages/com.unity.render-pipelines.high-definition\Runtime\ShaderLibrary\ShaderVariablesRaytracing.hlsl"
+            
+            #include "Packages/com.unity.render-pipelines.core\ShaderLibrary\Debug.hlsl"
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GeometricTools.hlsl"
+            
+            #include "Packages/com.unity.render-pipelines.high-definition\Runtime\Material\Builtin\BuiltinData.cs.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Lit/Lit.cs.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/Raytracing/Shaders/RaytracingIntersection.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Lit/LitRaytracingData.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderpassRaytracingReflection.hlsl"
+
+            ENDHLSL
+        }
+        Pass
+        {
+            Name "RTRaytrace_Visibility"
+            Tags{ "LightMode" = "ShadowsDXR" }
+
+            HLSLPROGRAM
+
+            #pragma raytracing test
+
+            #pragma multi_compile _ LIGHTMAP_ON
+            #pragma multi_compile _ DIRLIGHTMAP_COMBINED
+            #pragma multi_compile _ DYNAMICLIGHTMAP_ON
+
+            #define INTERSECTION_SHADING
+
+            #include "Packages/com.unity.render-pipelines.high-definition\Runtime\ShaderLibrary\ShaderVariablesRaytracing.hlsl"
+
+            #include "Packages/com.unity.render-pipelines.core\ShaderLibrary\Debug.hlsl"
+            #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/GeometricTools.hlsl"
+
+            #include "Packages/com.unity.render-pipelines.high-definition\Runtime\Material\Builtin\BuiltinData.cs.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Lit/Lit.cs.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/Raytracing/Shaders/RaytracingIntersection.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/Lit/LitRaytracingData.hlsl"
+            #include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/ShaderPass/ShaderpassRaytracingVisibility.hlsl"
 
             ENDHLSL
         }
     }
-    */
 
     CustomEditor "Experimental.Rendering.HDPipeline.LitGUI"
 }

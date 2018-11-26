@@ -49,6 +49,11 @@ TEXTURE2D(_LightLayersTexture);
 TEXTURE2D(_ShadowMaskTexture); // Alias for shadow mask, so we don't need to know which gbuffer is used for shadow mask
 #endif
 
+// Area shadow paper texture
+#ifdef ENABLE_RAYTRACING
+TEXTURE2D_ARRAY(_AreaShadowTexture);
+#endif
+
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/LTCAreaLight/LTCAreaLight.hlsl"
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Material/PreIntegratedFGD/PreIntegratedFGD.hlsl"
 

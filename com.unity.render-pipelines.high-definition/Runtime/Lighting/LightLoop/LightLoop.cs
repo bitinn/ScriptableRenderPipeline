@@ -241,12 +241,15 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             }
         }
 
-        LightList m_lightList;
+        public LightList m_lightList;
         int m_punctualLightCount = 0;
         int m_areaLightCount = 0;
         int m_lightCount = 0;
         int m_densityVolumeCount = 0;
         bool m_enableBakeShadowMask = false; // Track if any light require shadow mask. In this case we will need to enable the keyword shadow mask
+
+        public int areaLightCount { get { return m_areaLightCount; } }
+        public ComputeBuffer lightDatas { get { return m_LightDatas; } }
 
         private ComputeShader buildScreenAABBShader { get { return m_Resources.shaders.buildScreenAABBCS; } }
         private ComputeShader buildPerTileLightListShader { get { return m_Resources.shaders.buildPerTileLightListCS; } }
@@ -363,6 +366,10 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
         // shadow related stuff
         HDShadowManager                     m_ShadowManager;
         HDShadowInitParameters              m_ShadowInitParameters;
+
+#if ENABLE_RAYTRACING
+        HDRaytracingManager                 m_RayTracingManager;
+#endif
 
         // Used to shadow shadow maps with use selection enabled in the debug menu
         int m_DebugSelectedLightShadowIndex;
@@ -654,6 +661,13 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             CoreUtils.Destroy(m_CubeToPanoMaterial);
         }
 
+#if ENABLE_RAYTRACING
+        public void InitRaytracing(HDRaytracingManager raytracingManager)
+        {
+            m_RayTracingManager = raytracingManager;
+        }
+#endif
+
         public void NewFrame(FrameSettings frameSettings)
         {
             m_FrameSettings = frameSettings;
@@ -927,7 +941,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             return true;
         }
 
-        void GetScaleAndBiasForLinearDistanceFade(float fadeDistance, out float scale, out float bias)
+        static public void GetScaleAndBiasForLinearDistanceFade(float fadeDistance, out float scale, out float bias)
         {
             // Fade with distance calculation is just a linear fade from 90% of fade distance to fade distance. 90% arbitrarily chosen but should work well enough.
             float distanceFadeNear = 0.9f * fadeDistance;
@@ -935,7 +949,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             bias = -distanceFadeNear / (fadeDistance - distanceFadeNear);
         }
 
-        float ComputeLinearDistanceFade(float distanceToCamera, float fadeDistance)
+        static public float ComputeLinearDistanceFade(float distanceToCamera, float fadeDistance)
         {
             float scale;
             float bias;
@@ -946,7 +960,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
 
         public bool GetLightData(CommandBuffer cmd, HDShadowSettings shadowSettings, Camera camera, GPULightType gpuLightType,
             VisibleLight light, Light lightComponent, HDAdditionalLightData additionalLightData, AdditionalShadowData additionalShadowData,
-            int lightIndex, int shadowIndex, ref Vector3 lightDimensions, DebugDisplaySettings debugDisplaySettings)
+            int lightIndex, int shadowIndex, int maxAreaLightShadows, ref int areaShadowIndex, ref Vector3 lightDimensions, DebugDisplaySettings debugDisplaySettings)
         {
             // Clamp light list to the maximum allowed lights on screen to avoid ComputeBuffer overflow
             if (m_lightList.lights.Count >= m_MaxPunctualLightsOnScreen + m_MaxAreaLightsOnScreen)
@@ -1135,8 +1149,18 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                 lightData.volumetricShadowDimmer = 1.0f;
             }
 
-            // fix up shadow information
-            lightData.shadowIndex = shadowIndex;
+            if(gpuLightType == GPULightType.Rectangle && lightComponent.shadows != LightShadows.None && areaShadowIndex < maxAreaLightShadows)
+            {
+                lightData.shadowIndex = areaShadowIndex;
+                additionalLightData.shadowIndex = -1;
+                areaShadowIndex++;
+            }
+            else
+            {
+                // fix up shadow information
+                lightData.shadowIndex = shadowIndex;
+                additionalLightData.shadowIndex = shadowIndex;
+            }
 
             // Value of max smoothness is from artists point of view, need to convert from perceptual smoothness to roughness
             lightData.minRoughness = (1.0f - additionalLightData.maxSmoothness) * (1.0f - additionalLightData.maxSmoothness);
@@ -1619,6 +1643,10 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
         public bool PrepareLightsForGPU(CommandBuffer cmd, HDCamera hdCamera, CullingResults cullResults,
             ReflectionProbeCullResults reflectionProbeCullResults, DensityVolumeList densityVolumes, DebugDisplaySettings debugDisplaySettings)
         {
+        #if ENABLE_RAYTRACING
+            HDRaytracingEnvironment raytracingEnv = m_RayTracingManager.CurrentEnvironment();
+        #endif
+
             using (new ProfilingSample(cmd, "Prepare Lights For GPU"))
             {
                 Camera camera = hdCamera.camera;
@@ -1779,6 +1807,13 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                     // 2. Go through all lights, convert them to GPU format.
                     // Simultaneously create data for culling (LightVolumeData and SFiniteLightBound)
 
+                    int areaLightShadowIndex = 0;
+#if ENABLE_RAYTRACING
+                    int maxAreaLightShadows = raytracingEnv != null ? raytracingEnv.numAreaLightShadows : 0;
+#else
+                    int maxAreaLightShadows = 0;
+#endif
+
                     for (int sortIndex = 0; sortIndex < sortCount; ++sortIndex)
                     {
                         // In 1. we have already classify and sorted the light, we need to use this sorted order here
@@ -1799,7 +1834,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
 
                         int shadowIndex = -1;
                         // Manage shadow requests
-                        if (additionalLightData.WillRenderShadows())
+                        if (additionalLightData.WillRenderShadows() && gpuLightType != GPULightType.Rectangle)
                         {
                                 int shadowRequestCount;
                             shadowIndex = additionalLightData.UpdateShadowRequest(hdCamera, m_ShadowManager, light, cullResults, lightIndex, out shadowRequestCount);
@@ -1839,7 +1874,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                         Vector3 lightDimensions = new Vector3(); // X = length or width, Y = height, Z = range (depth)
 
                         // Punctual, area, projector lights - the rendering side.
-                        if (GetLightData(cmd, hdShadowSettings, camera, gpuLightType, light, lightComponent, additionalLightData, additionalShadowData, lightIndex, shadowIndex, ref lightDimensions, debugDisplaySettings))
+                        if (GetLightData(cmd, hdShadowSettings, camera, gpuLightType, light, lightComponent, additionalLightData, additionalShadowData, lightIndex, shadowIndex, maxAreaLightShadows, ref areaLightShadowIndex, ref lightDimensions, debugDisplaySettings))
                         {
                             switch (lightCategory)
                             {

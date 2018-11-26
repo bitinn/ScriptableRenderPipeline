@@ -572,7 +572,7 @@ namespace UnityEditor.Experimental.Rendering.HDPipeline
                 serialized.settings.shadowsType.enumValueIndex = newShadowsEnabled ? (int)LightShadows.Hard : (int)LightShadows.None;
             }
 
-            using (new EditorGUI.DisabledScope(!newShadowsEnabled))
+            using (new EditorGUI.DisabledScope(!newShadowsEnabled && LightShape.Rectangle != serialized.editorLightShape))
             {
                 EditorGUILayout.DelayedIntField(serialized.serializedShadowData.resolution, s_Styles.shadowResolution);
                 EditorGUILayout.Slider(serialized.serializedLightData.shadowNearPlane, HDShadowUtils.k_MinShadowNearPlane, 10f, s_Styles.shadowNearPlane);

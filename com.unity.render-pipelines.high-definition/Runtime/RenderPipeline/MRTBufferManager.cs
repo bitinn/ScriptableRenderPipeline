@@ -6,7 +6,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
     {
         protected int m_BufferCount;
         protected RenderTargetIdentifier[] m_RTIDs;
-        protected RTHandleSystem.RTHandle[] m_RTs;
+        public RTHandleSystem.RTHandle[] m_RTs;
         protected int[] m_TextureShaderIDs;
 
         public int bufferCount { get { return m_BufferCount; } }

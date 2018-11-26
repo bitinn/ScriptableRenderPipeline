@@ -134,5 +134,22 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                     break;
             }
         }
+
+        public void Bind(CommandBuffer cmd, FGDIndex index)
+        {
+            switch (index)
+            {
+                case FGDIndex.FGD_GGXAndDisneyDiffuse:
+                    cmd.SetGlobalTexture(HDShaderIDs._PreIntegratedFGD_GGXDisneyDiffuse, m_PreIntegratedFGD[(int)index]);
+                    break;
+
+                case FGDIndex.FGD_CharlieAndFabricLambert:
+                    cmd.SetGlobalTexture(HDShaderIDs._PreIntegratedFGD_CharlieAndFabric, m_PreIntegratedFGD[(int)index]);
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 }

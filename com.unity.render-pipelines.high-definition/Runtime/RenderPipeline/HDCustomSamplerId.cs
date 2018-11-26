@@ -54,6 +54,8 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
         UpdateStencilCopyForSSRExclusion,
         GizmosPrePostprocess,
         Gizmos,
+        
+        Raytracing,
 
         // Profile sampler for tile pass
         TPPrepareLightsForGPU,

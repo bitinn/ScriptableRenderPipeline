@@ -428,8 +428,19 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
         public static readonly int _VolumeMaskAtlas                = Shader.PropertyToID("_VolumeMaskAtlas");
         public static readonly int _VolumeMaskDimensions           = Shader.PropertyToID("_VolumeMaskDimensions");
 
-        public static readonly int _EnableLightLayers                = Shader.PropertyToID("_EnableLightLayers");
+        public static readonly int _EnableLightLayers               = Shader.PropertyToID("_EnableLightLayers");
 
+#if ENABLE_RAYTRACING
+        // Raytracing variables
+        public static readonly int _RaytracedAreaShadow             = Shader.PropertyToID("_RaytracedAreaShadow");
+        public static readonly int _RaytracingNoiseTexture          = Shader.PropertyToID("_RaytracingNoiseTexture");
+        public static readonly int _RaytracingNoiseResolution       = Shader.PropertyToID("_RaytracingNoiseResolution");
+        public static readonly int _RaytracingNumNoiseLayers        = Shader.PropertyToID("_RaytracingNumNoiseLayers");
+        public static readonly int _RaytracingRayBias               = Shader.PropertyToID("_RaytracingRayBias");
+        public static readonly int _RaytracingRayMaxLength          = Shader.PropertyToID("_RaytracingRayMaxLength");
+        public static readonly string _RaytracingAccelerationStructureName           = "_RaytracingAccelerationStructure";
+
+#endif
         // Preintegrated texture name
         public static readonly int _PreIntegratedFGD_GGXDisneyDiffuse = Shader.PropertyToID("_PreIntegratedFGD_GGXDisneyDiffuse");
         public static readonly int _PreIntegratedFGD_CharlieAndFabric = Shader.PropertyToID("_PreIntegratedFGD_CharlieAndFabric");
