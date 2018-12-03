@@ -106,11 +106,11 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                 lightData = m_RaytracingManager.RequestHDLightList(m_PipelineAsset.renderPipelineSettings.defaultLayerMask);
             }
 
-            // Evaluate the light cluster
-            m_LightCluster.EvaluateLightClusters(cmd, hdCamera, lightData);
-
             // If no acceleration structure available, end it now
             if (accelerationStructure == null) return;
+
+            // Evaluate the light cluster
+            m_LightCluster.EvaluateLightClusters(cmd, hdCamera, lightData);
 
             // Define the shader pass to use for the reflection pass
             cmd.SetRaytracingShaderPass(reflectionShader, "RTRaytrace_Reflections");
