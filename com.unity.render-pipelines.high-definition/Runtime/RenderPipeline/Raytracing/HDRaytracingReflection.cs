@@ -149,7 +149,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             cmd.SetRaytracingTextureParam(reflectionShader, m_MissShaderName, HDShaderIDs._SkyTexture, m_SkyManager.skyReflection);
 
             // Run the calculus
-            cmd.DispatchRays(reflectionShader, m_RayGenShaderName, (uint)hdCamera.actualWidth, (uint)hdCamera.actualHeight);
+            cmd.DispatchRays(reflectionShader, m_RayGenShaderName, (uint)hdCamera.actualWidth, (uint)hdCamera.actualHeight, 1);
 
             using (new ProfilingSample(cmd, "Filter Reflection", CustomSamplerId.Raytracing.GetSampler()))
             {

@@ -155,7 +155,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
 
 
                     // Run the shadow evaluation
-                    cmd.DispatchRays(shadowsShader, m_RayGenShaderName, (uint)hdCamera.actualWidth, (uint)hdCamera.actualHeight);
+                    cmd.DispatchRays(shadowsShader, m_RayGenShaderName, (uint)hdCamera.actualWidth, (uint)hdCamera.actualHeight, 1);
                 }
 
                 using (new ProfilingSample(cmd, "Combine Area Shadow", CustomSamplerId.Raytracing.GetSampler()))

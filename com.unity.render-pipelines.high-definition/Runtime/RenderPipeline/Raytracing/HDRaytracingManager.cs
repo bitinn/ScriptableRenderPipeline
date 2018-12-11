@@ -441,7 +441,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                                 {
                                     pointLights.Add(hdLight);
                                 }
-                                else if (hdLight.lightTypeExtent == LightTypeExtent.Line)
+                                else if (hdLight.lightTypeExtent == LightTypeExtent.Tube)
                                 {
                                     lineLights.Add(hdLight);
                                 }

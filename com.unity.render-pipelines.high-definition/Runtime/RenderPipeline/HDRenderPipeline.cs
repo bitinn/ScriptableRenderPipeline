@@ -1301,7 +1301,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                         {
                             SSRTask.Start(cmd, renderContext, (CommandBuffer asyncCmd) =>
                             {
-                                RenderSSR(hdCamera, asyncCmd);
+                                RenderSSR(hdCamera, asyncCmd, renderContext);
                             }, !haveAsyncTaskWithShadows);
 
                             haveAsyncTaskWithShadows = true;
@@ -1342,7 +1342,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                         if (!hdCamera.frameSettings.SSRRunsAsync())
                         {
                             // Needs the depth pyramid and motion vectors, as well as the render of the previous frame.
-                            RenderSSR(hdCamera, cmd);
+                            RenderSSR(hdCamera, cmd, renderContext);
                         }
 
                         if (hdCamera.frameSettings.BuildLightListRunsAsync())

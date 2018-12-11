@@ -338,8 +338,8 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                         gpuLightType = GPULightType.Rectangle;
                         break;
 
-                    case LightTypeExtent.Line:
-                        gpuLightType = GPULightType.Line;
+                    case LightTypeExtent.Tube:
+                        gpuLightType = GPULightType.Tube;
                         break;
 
                     default:
@@ -490,7 +490,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
                     lightData.size = new Vector2(additionalLightData.shapeRadius * additionalLightData.shapeRadius, 0);
                 }
 
-                if (lightData.lightType == GPULightType.Rectangle || lightData.lightType == GPULightType.Line)
+                if (lightData.lightType == GPULightType.Rectangle || lightData.lightType == GPULightType.Tube)
                 {
                     lightData.size = new Vector2(additionalLightData.shapeWidth, additionalLightData.shapeHeight);
                 }
