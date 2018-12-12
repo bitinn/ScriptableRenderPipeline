@@ -630,7 +630,7 @@ __Exponential Fog__
 
 Density will increase exponentially with view distance and world space height depending on the provided parameters.
 
-![](Images/SkyAndFog6.png)
+![](Images/SkyandFog6.png)
 
 | Property| Function |
 |:---|:---|
