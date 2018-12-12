@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>FAQ - Unity SRP Doc</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "FAQ";
+    var mkdocs_page_input_path = "LWRP/faq.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Unity SRP Doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">This is an unofficial Unity SRP Doc</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Core</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Core/ScriptableRenderPipeline/">Scriptable Render Pipeline</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">HDRP</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../HDRP/HDRenderPipeline/">High Definition Render Pipeline</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">LWRP</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">About the Lightweight Render Pipeline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TableOfContents/">TableOfContents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autodesk-interactive-masked-shader/">Autodesk interactive masked shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autodesk-interactive-shader/">Autodesk interactive shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../autodesk-interactive-transparent-shader/">Autodesk interactive transparent shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../baked-lit-shader/">Baked lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../camera-inspector/">Camera inspector</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../camera/">Camera</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../configuring-lwrp-for-use/">Configuring lwrp for use</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../creating-a-new-project-with-lwrp/">Creating a new project with lwrp</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">FAQ</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#faq">FAQ</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#can-i-no-longer-use-information-from-the-unity-manual">Can I no longer use information from the Unity Manual?</a></li>
+        
+            <li><a class="toctree-l4" href="#so-what-do-i-need-this-documentation-for">So what do I need this documentation for?</a></li>
+        
+            <li><a class="toctree-l4" href="#can-i-use-lwrp-and-hdrp-at-the-same-time">Can I use LWRP and HDRP at the same time?</a></li>
+        
+            <li><a class="toctree-l4" href="#can-i-convert-from-one-pipeline-to-the-other">Can I convert from one pipeline to the other?</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../forward-renderer/">Forward renderer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../getting-started-with-lwrp/">Getting started with lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../inside-lwrp/">Inside lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../installing-lwrp-into-an-existing-project/">Installing lwrp into an existing project</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../integration-with-post-processing/">Integration with post processing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../integration-with-terrain/">Integration with terrain</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../integrations-with-shader-graph/">Integrations with shader graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../light-inspector/">Light inspector</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lit-shader/">Lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lwrp-asset/">Lwrp asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lwrp-builtin-feature-comparison/">Lwrp builtin feature comparison</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../lwrp-internal-flowchart/">Lwrp internal flowchart</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../particles-lit-shader/">Particles lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../particles-simple-lit-shader/">Particles simple lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../particles-unlit-shader/">Particles unlit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../realtime-lighting-in-lwrp/">Realtime lighting in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rendering-in-lwrp/">Rendering in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../shader-stripping-keywords/">Shader stripping keywords</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../shader-stripping/">Shader stripping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../shaders-in-lwrp/">Shaders in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../shading-model/">Shading model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../simple-lit-shader/">Simple lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../unlit-shader/">Unlit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../upgrading-your-shaders/">Upgrading your shaders</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ShaderGraph</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/">Index</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Absolute-Node/">Absolute Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Add-Node/">Add Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/All-Node/">All Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Ambient-Node/">Ambient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/And-Node/">And Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Any-Node/">Any Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Arccosine-Node/">Arccosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Arcsine-Node/">Arcsine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Arctangent-Node/">Arctangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Arctangent2-Node/">Arctangent2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Artistic-Nodes/">Artistic Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Baked-GI-Node/">Baked GI Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Bitangent-Vector-Node/">Bitangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Blackboard/">Blackboard</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Blend-Node/">Blend Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Boolean-Node/">Boolean Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Branch-Node/">Branch Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Camera-Node/">Camera Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Ceiling-Node/">Ceiling Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Channel-Mask-Node/">Channel Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Channel-Mixer-Node/">Channel Mixer Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Channel-Nodes/">Channel Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Checkerboard-Node/">Checkerboard Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Clamp-Node/">Clamp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode-Port-Types/">CodeFunctionNode Port Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode.Binding/">CodeFunctionNode.Binding</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode.GetFunctionToConvert/">CodeFunctionNode.GetFunctionToConvert</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode.SlotAttribute/">CodeFunctionNode.SlotAttribute</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode/">CodeFunctionNode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Color-Mask-Node/">Color Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Color-Node/">Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Colorspace-Conversion-Node/">Colorspace Conversion Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Combine-Node/">Combine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Comparison-Node/">Comparison Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Constant-Node/">Constant Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Contrast-Node/">Contrast Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Cosine-Node/">Cosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Create-Node-Menu/">Create Node Menu</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Cross-Product-Node/">Cross Product Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Cubemap-Asset-Node/">Cubemap Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Custom-Nodes-With-CodeFunctionNode/">Custom Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/DDX-Node/">DDX Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/DDXY-Node/">DDXY Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/DDY-Node/">DDY Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Data-Types/">Data Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Data/">Data</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Degrees-To-Radians-Node/">Degrees To Radians Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Dielectric-Specular-Node/">Dielectric Specular Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Distance-Node/">Distance Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Dither-Node/">Dither Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Divide-Node/">Divide Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Dot-Product-Node/">Dot Product Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Edge/">Edge</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Ellipse-Node/">Ellipse Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Exponential-Node/">Exponential Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Flip-Node/">Flip Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Flipbook-Node/">Flipbook Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Floor-Node/">Floor Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Fog-Node/">Fog Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Fraction-Node/">Fraction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Fresnel-Effect-Node/">Fresnel Effect Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Getting-Started/">Getting Started with Shader Graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Gradient-Node/">Gradient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Gradient-Noise-Node/">Gradient Noise Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Hue-Node/">Hue Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Hyperbolic-Cosine-Node/">Hyperbolic Cosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Hyperbolic-Sine-Node/">Hyperbolic Sine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Hyperbolic-Tangent-Node/">Hyperbolic Tangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Input-Nodes/">Input Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Integer-Node/">Integer Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Inverse-Lerp-Node/">Inverse Lerp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Invert-Colors-Node/">Invert Colors Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Is-Front-Face/">Is Front Face Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Is-Infinite-Node/">Is Infinite Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Is-NaN-Node/">Is NaN Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Length-Node/">Length Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Lerp-Node/">Lerp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Log-Node/">Log Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Master-Node/">Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Master-Nodes/">Master Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Master-Preview/">Master Preview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Math-Nodes/">Math Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-2x2-Node/">Matrix 2x2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-3x3-Node/">Matrix 3x3 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-4x4-Node/">Matrix 4x4 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-Construction-Node/">Matrix Construction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-Determinant-Node/">Matrix Determinant</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-Split-Node/">Matrix Split Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-Transpose-Node/">Matrix Transpose</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Maximum-Node/">Maximum Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Metal-Reflectance-Node/">Metal Reflectance Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Minimum-Node/">Minimum Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Modulo-Node/">Modulo Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Multiply-Node/">Multiply Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Nand-Node/">Nand Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Negate-Node/">Negate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Node-Library/">Node Library</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Node/">Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Noise-Sine-Wave-Node/">Noise Sine Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Blend-Node/">Normal Blend Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-From-Height-Node/">Normal From Height Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-From-Texture-Node/">Normal From Texture Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Reconstruct-Z-Node/">Normal Reconstruct Z Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Strength-Node/">Normal Strength Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Unpack-Node/">Normal Unpack Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Vector-Node/">Normal Vector Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normalize-Node/">Normalize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Not-Node/">Not Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Object-Node/">Object Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/One-Minus-Node/">One Minus Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Or-Node/">Or Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/PBR-Master-Node/">PBR Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Polar-Coordinates-Node/">Polar Coordinates Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Polygon-Node/">Polygon Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Port-Bindings/">Port Bindings</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Port/">Port</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Position-Node/">Position Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Posterize-Node/">Posterize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Power-Node/">Power Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Preview-Node/">Preview Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Procedural-Nodes/">Procedural Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Projection-Node/">Projection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Property-Types/">Property Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Radial-Shear-Node/">Radial Shear Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Radians-To-Degrees-Node/">Radians To Degrees Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Random-Range-Node/">Random Range Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Reciprocal-Node/">Reciprocal Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Reciprocal-Square-Root-Node/">Reciprocal Square Root Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rectangle-Node/">Rectangle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Reflection-Node/">Reflection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Reflection-Probe-Node/">Reflection Probe Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rejection-Node/">Rejection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Remap-Node/">Remap Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Replace-Color-Node/">Replace Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rotate-About-Axis-Node/">Rotate About Axis Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rotate-Node/">Rotate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Round-Node/">Round Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rounded-Rectangle-Node/">Rounded Rectangle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Cubemap-Node/">Sample Cubemap Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Gradient-Node/">Sample Gradient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Texture-2D-Array-Node/">Sample Texture 2D Array Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Texture-2D-LOD-Node/">Sample Texture 2D LOD Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Texture-2D-Node/">Sample Texture 2D Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Texture-3D-Node/">Sample Texture 3D Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sampler-State-Node/">Sampler State Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Saturate-Node/">Saturate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Saturation-Node/">Saturation Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sawtooth-Wave-Node/">Sawtooth Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Scene-Color-Node/">Scene Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Scene-Depth-Node/">Scene Depth Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Screen-Node/">Screen Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Screen-Position-Node/">Screen Position Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Scripting-API/">Scripting API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Shader-Graph-Asset/">Shader Graph Asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Shader-Graph-Window/">Shader Graoh Window</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Shader-Graph/">Shader Graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Shader-Stage/">Shader Stage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sign-Node/">Sign Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Simple-Noise-Node/">Simple Noise Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sine-Node/">Sine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Slider-Node/">Slider Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Smoothstep-Node/">Smoothstep Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sphere-Mask-Node/">Sphere Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Spherize-Node/">Spherize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Split-Node/">Split Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Square-Root-Node/">Square Root Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Square-Wave-Node/">Square Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Step-Node/">Step Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sub-graph-Asset/">Sub-graph Asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sub-graph-Node/">Sub-graph Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sub-graph/">Sub-graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Subtract-Node/">Subtract Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Swizzle-Node/">Swizzle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/TableOfContents/">TableOfContents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Tangent-Node/">Tangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Tangent-Vector-Node/">Tangent Vector Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Texel-Size-Node/">Texel Size Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Texture-2D-Array-Asset-Node/">Texture 2D Array Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Texture-2D-Asset-Node/">Texture 2D Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Texture-3D-Asset-Node/">Texture 3D Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Tiling-And-Offset-Node/">Tiling And Offset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Time-Node/">Time Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Transform-Node/">Transform Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Transformation-Matrix-Node/">Transformation Matrix Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Triange-Wave-Node/">Triangle Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Triplanar-Node/">Triplanar Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Truncate-Node/">Truncate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Twirl-Node/">Twirl Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/UV-Node/">UV Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/UV-Nodes/">UV Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Unlit-Master-Node/">Unlit Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Utility-Nodes/">Utility Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vector-1-Node/">Vector 1 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vector-2-Node/">Vector 2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vector-3-Node/">Vector 3 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vector-4-Node/">Vector 4 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vertex-Color-Node/">Vertex Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/View-Direction-Node/">View Direction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Voronoi-Node/">Voronoi Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/White-Balance-Node/">White Balance Node</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Unity SRP Doc</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>LWRP &raquo;</li>
+        
+      
+    
+    <li>FAQ</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="faq">FAQ</h1>
+<h3 id="can-i-no-longer-use-information-from-the-unity-manual">Can I no longer use information from the Unity Manual?</h3>
+<p>Oh, please do! We reused as much as possible of the built-in Unity render pipeline. The Graphics section of the Unity Manual still has a lot of good stuff. In the documentation for LWRP, you'll find cross references to  the Graphics manual, whenever something's already explained there. </p>
+<h3 id="so-what-do-i-need-this-documentation-for">So what do I need this documentation for?</h3>
+<p>Because this is where you'll read specifically about LWRP. Because LWRP is a package that requires for you to download, we're keeping the docs specific to that package separate from the general user Manual. </p>
+<h3 id="can-i-use-lwrp-and-hdrp-at-the-same-time">Can I use LWRP and HDRP at the same time?</h3>
+<p>No. They're both built on the Scriptable Render Pipelines, but their render paths and light models are different. </p>
+<h3 id="can-i-convert-from-one-pipeline-to-the-other">Can I convert from one pipeline to the other?</h3>
+<p>Yes! To do so, you'll have to re-write your assets and revisit your lighting strategy for your game or app.</p>
+<p><strong>Important:</strong> This page is still a work in progress. To read our most current documentation, open the <a href="#TableOfContents.md"><em>TableOfContents.md</em></a> file to see the linked pages.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../forward-renderer/" class="btn btn-neutral float-right" title="Forward renderer">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../creating-a-new-project-with-lwrp/" class="btn btn-neutral" title="Creating a new project with lwrp"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../creating-a-new-project-with-lwrp/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../forward-renderer/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

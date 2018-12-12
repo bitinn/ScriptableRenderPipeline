@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>High Definition Render Pipeline - Unity SRP Doc</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "High Definition Render Pipeline";
+    var mkdocs_page_input_path = "HDRP/HDRenderPipeline.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Unity SRP Doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">This is an unofficial Unity SRP Doc</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Core</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Core/ScriptableRenderPipeline/">Scriptable Render Pipeline</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">HDRP</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">High Definition Render Pipeline</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#high-definition-render-pipeline">High Definition Render Pipeline</a></li>
+    
+
+    <li class="toctree-l3"><a href="#getting-started-with-high-definition-render-pipeline">Getting Started with High Definition Render Pipeline</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#setting-up-a-new-project">Setting up a new Project</a></li>
+        
+            <li><a class="toctree-l4" href="#upgrading-an-existing-project">Upgrading an Existing Project</a></li>
+        
+            <li><a class="toctree-l4" href="#building-from-source-code">Building from source code</a></li>
+        
+            <li><a class="toctree-l4" href="#upgrading-shaders">Upgrading Shaders</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#the-hd-render-pipeline-lit-shader">The HD Render Pipeline Lit Shader</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#creating-a-lit-shader">Creating a Lit Shader</a></li>
+        
+            <li><a class="toctree-l4" href="#how-to-set-a-lit-shader">How to set a Lit Shader?</a></li>
+        
+            <li><a class="toctree-l4" href="#vertex-animation-enable-wind">Vertex animation / Enable wind</a></li>
+        
+            <li><a class="toctree-l4" href="#inputs">Inputs</a></li>
+        
+            <li><a class="toctree-l4" href="#detail-inputs">Detail inputs</a></li>
+        
+            <li><a class="toctree-l4" href="#emissive-inputs">Emissive inputs</a></li>
+        
+            <li><a class="toctree-l4" href="#advanced-options">Advanced options:</a></li>
+        
+            <li><a class="toctree-l4" href="#specific-setting-from-material-type">Specific setting from material type</a></li>
+        
+            <li><a class="toctree-l4" href="#translucent">Translucent</a></li>
+        
+            <li><a class="toctree-l4" href="#how-to-set-a-lit-shader-tessellation">How to set a Lit Shader Tessellation?</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#sky-and-fog">Sky and Fog</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#setting-up-the-sky">Setting up the Sky</a></li>
+        
+            <li><a class="toctree-l4" href="#setting-up-the-fog">Setting up the Fog</a></li>
+        
+            <li><a class="toctree-l4" href="#visual-environment">Visual Environment</a></li>
+        
+            <li><a class="toctree-l4" href="#writing-custom-sky-renderers">Writing Custom Sky Renderers</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">LWRP</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../LWRP/">About the Lightweight Render Pipeline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/TableOfContents/">TableOfContents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/autodesk-interactive-masked-shader/">Autodesk interactive masked shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/autodesk-interactive-shader/">Autodesk interactive shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/autodesk-interactive-transparent-shader/">Autodesk interactive transparent shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/baked-lit-shader/">Baked lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/camera-inspector/">Camera inspector</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/camera/">Camera</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/configuring-lwrp-for-use/">Configuring lwrp for use</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/creating-a-new-project-with-lwrp/">Creating a new project with lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/forward-renderer/">Forward renderer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/getting-started-with-lwrp/">Getting started with lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/inside-lwrp/">Inside lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/installing-lwrp-into-an-existing-project/">Installing lwrp into an existing project</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/integration-with-post-processing/">Integration with post processing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/integration-with-terrain/">Integration with terrain</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/integrations-with-shader-graph/">Integrations with shader graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/light-inspector/">Light inspector</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lit-shader/">Lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lwrp-asset/">Lwrp asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lwrp-builtin-feature-comparison/">Lwrp builtin feature comparison</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lwrp-internal-flowchart/">Lwrp internal flowchart</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/particles-lit-shader/">Particles lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/particles-simple-lit-shader/">Particles simple lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/particles-unlit-shader/">Particles unlit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/realtime-lighting-in-lwrp/">Realtime lighting in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/rendering-in-lwrp/">Rendering in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shader-stripping-keywords/">Shader stripping keywords</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shader-stripping/">Shader stripping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shaders-in-lwrp/">Shaders in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shading-model/">Shading model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/simple-lit-shader/">Simple lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/unlit-shader/">Unlit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/upgrading-your-shaders/">Upgrading your shaders</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ShaderGraph</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/">Index</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Absolute-Node/">Absolute Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Add-Node/">Add Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/All-Node/">All Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Ambient-Node/">Ambient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/And-Node/">And Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Any-Node/">Any Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Arccosine-Node/">Arccosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Arcsine-Node/">Arcsine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Arctangent-Node/">Arctangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Arctangent2-Node/">Arctangent2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Artistic-Nodes/">Artistic Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Baked-GI-Node/">Baked GI Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Bitangent-Vector-Node/">Bitangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Blackboard/">Blackboard</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Blend-Node/">Blend Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Boolean-Node/">Boolean Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Branch-Node/">Branch Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Camera-Node/">Camera Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Ceiling-Node/">Ceiling Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Channel-Mask-Node/">Channel Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Channel-Mixer-Node/">Channel Mixer Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Channel-Nodes/">Channel Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Checkerboard-Node/">Checkerboard Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Clamp-Node/">Clamp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode-Port-Types/">CodeFunctionNode Port Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode.Binding/">CodeFunctionNode.Binding</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode.GetFunctionToConvert/">CodeFunctionNode.GetFunctionToConvert</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode.SlotAttribute/">CodeFunctionNode.SlotAttribute</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/CodeFunctionNode/">CodeFunctionNode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Color-Mask-Node/">Color Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Color-Node/">Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Colorspace-Conversion-Node/">Colorspace Conversion Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Combine-Node/">Combine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Comparison-Node/">Comparison Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Constant-Node/">Constant Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Contrast-Node/">Contrast Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Cosine-Node/">Cosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Create-Node-Menu/">Create Node Menu</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Cross-Product-Node/">Cross Product Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Cubemap-Asset-Node/">Cubemap Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Custom-Nodes-With-CodeFunctionNode/">Custom Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/DDX-Node/">DDX Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/DDXY-Node/">DDXY Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/DDY-Node/">DDY Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Data-Types/">Data Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Data/">Data</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Degrees-To-Radians-Node/">Degrees To Radians Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Dielectric-Specular-Node/">Dielectric Specular Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Distance-Node/">Distance Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Dither-Node/">Dither Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Divide-Node/">Divide Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Dot-Product-Node/">Dot Product Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Edge/">Edge</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Ellipse-Node/">Ellipse Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Exponential-Node/">Exponential Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Flip-Node/">Flip Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Flipbook-Node/">Flipbook Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Floor-Node/">Floor Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Fog-Node/">Fog Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Fraction-Node/">Fraction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Fresnel-Effect-Node/">Fresnel Effect Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Getting-Started/">Getting Started with Shader Graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Gradient-Node/">Gradient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Gradient-Noise-Node/">Gradient Noise Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Hue-Node/">Hue Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Hyperbolic-Cosine-Node/">Hyperbolic Cosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Hyperbolic-Sine-Node/">Hyperbolic Sine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Hyperbolic-Tangent-Node/">Hyperbolic Tangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Input-Nodes/">Input Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Integer-Node/">Integer Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Inverse-Lerp-Node/">Inverse Lerp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Invert-Colors-Node/">Invert Colors Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Is-Front-Face/">Is Front Face Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Is-Infinite-Node/">Is Infinite Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Is-NaN-Node/">Is NaN Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Length-Node/">Length Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Lerp-Node/">Lerp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Log-Node/">Log Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Master-Node/">Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Master-Nodes/">Master Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Master-Preview/">Master Preview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Math-Nodes/">Math Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-2x2-Node/">Matrix 2x2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-3x3-Node/">Matrix 3x3 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-4x4-Node/">Matrix 4x4 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-Construction-Node/">Matrix Construction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-Determinant-Node/">Matrix Determinant</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-Split-Node/">Matrix Split Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Matrix-Transpose-Node/">Matrix Transpose</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Maximum-Node/">Maximum Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Metal-Reflectance-Node/">Metal Reflectance Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Minimum-Node/">Minimum Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Modulo-Node/">Modulo Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Multiply-Node/">Multiply Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Nand-Node/">Nand Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Negate-Node/">Negate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Node-Library/">Node Library</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Node/">Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Noise-Sine-Wave-Node/">Noise Sine Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Blend-Node/">Normal Blend Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-From-Height-Node/">Normal From Height Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-From-Texture-Node/">Normal From Texture Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Reconstruct-Z-Node/">Normal Reconstruct Z Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Strength-Node/">Normal Strength Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Unpack-Node/">Normal Unpack Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normal-Vector-Node/">Normal Vector Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Normalize-Node/">Normalize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Not-Node/">Not Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Object-Node/">Object Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/One-Minus-Node/">One Minus Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Or-Node/">Or Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/PBR-Master-Node/">PBR Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Polar-Coordinates-Node/">Polar Coordinates Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Polygon-Node/">Polygon Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Port-Bindings/">Port Bindings</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Port/">Port</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Position-Node/">Position Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Posterize-Node/">Posterize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Power-Node/">Power Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Preview-Node/">Preview Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Procedural-Nodes/">Procedural Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Projection-Node/">Projection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Property-Types/">Property Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Radial-Shear-Node/">Radial Shear Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Radians-To-Degrees-Node/">Radians To Degrees Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Random-Range-Node/">Random Range Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Reciprocal-Node/">Reciprocal Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Reciprocal-Square-Root-Node/">Reciprocal Square Root Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rectangle-Node/">Rectangle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Reflection-Node/">Reflection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Reflection-Probe-Node/">Reflection Probe Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rejection-Node/">Rejection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Remap-Node/">Remap Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Replace-Color-Node/">Replace Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rotate-About-Axis-Node/">Rotate About Axis Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rotate-Node/">Rotate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Round-Node/">Round Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Rounded-Rectangle-Node/">Rounded Rectangle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Cubemap-Node/">Sample Cubemap Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Gradient-Node/">Sample Gradient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Texture-2D-Array-Node/">Sample Texture 2D Array Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Texture-2D-LOD-Node/">Sample Texture 2D LOD Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Texture-2D-Node/">Sample Texture 2D Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sample-Texture-3D-Node/">Sample Texture 3D Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sampler-State-Node/">Sampler State Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Saturate-Node/">Saturate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Saturation-Node/">Saturation Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sawtooth-Wave-Node/">Sawtooth Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Scene-Color-Node/">Scene Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Scene-Depth-Node/">Scene Depth Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Screen-Node/">Screen Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Screen-Position-Node/">Screen Position Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Scripting-API/">Scripting API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Shader-Graph-Asset/">Shader Graph Asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Shader-Graph-Window/">Shader Graoh Window</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Shader-Graph/">Shader Graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Shader-Stage/">Shader Stage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sign-Node/">Sign Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Simple-Noise-Node/">Simple Noise Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sine-Node/">Sine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Slider-Node/">Slider Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Smoothstep-Node/">Smoothstep Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sphere-Mask-Node/">Sphere Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Spherize-Node/">Spherize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Split-Node/">Split Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Square-Root-Node/">Square Root Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Square-Wave-Node/">Square Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Step-Node/">Step Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sub-graph-Asset/">Sub-graph Asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sub-graph-Node/">Sub-graph Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Sub-graph/">Sub-graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Subtract-Node/">Subtract Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Swizzle-Node/">Swizzle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/TableOfContents/">TableOfContents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Tangent-Node/">Tangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Tangent-Vector-Node/">Tangent Vector Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Texel-Size-Node/">Texel Size Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Texture-2D-Array-Asset-Node/">Texture 2D Array Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Texture-2D-Asset-Node/">Texture 2D Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Texture-3D-Asset-Node/">Texture 3D Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Tiling-And-Offset-Node/">Tiling And Offset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Time-Node/">Time Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Transform-Node/">Transform Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Transformation-Matrix-Node/">Transformation Matrix Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Triange-Wave-Node/">Triangle Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Triplanar-Node/">Triplanar Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Truncate-Node/">Truncate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Twirl-Node/">Twirl Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/UV-Node/">UV Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/UV-Nodes/">UV Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Unlit-Master-Node/">Unlit Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Utility-Nodes/">Utility Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vector-1-Node/">Vector 1 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vector-2-Node/">Vector 2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vector-3-Node/">Vector 3 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vector-4-Node/">Vector 4 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Vertex-Color-Node/">Vertex Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/View-Direction-Node/">View Direction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/Voronoi-Node/">Voronoi Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ShaderGraph/White-Balance-Node/">White Balance Node</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Unity SRP Doc</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>HDRP &raquo;</li>
+        
+      
+    
+    <li>High Definition Render Pipeline</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="high-definition-render-pipeline">High Definition Render Pipeline</h1>
+<p><img alt="" src="https://blogs.unity3d.com/wp-content/uploads/2018/01/image2.jpg" /></p>
+<p>The High Definition Render Pipeline (HDRP) is a high-fidelity Scriptable Render Pipeline built by Unity to target modern (Compute Shader compatible) platforms. </p>
+<p>The HDRP utilizes Physically-Based Lighting techniques, linear lighting, HDR lighting and a configurable hybrid Tile/Cluster deferred/Forward lighting architecture and gives you the tools you need to create games, technical demos, animations and more to a high graphical standard. </p>
+<p>NOTE: Projects made using HDRP are not compatible with the Lightweight Render Pipeline. You must decide which render pipeline your project will use before starting development as HDRP features are not cross-compatible between HDRP and Lightweight. </p>
+<p>This section contains the information you need to begin creating applications using HDRP; including information on Lighting, Materials and Shaders, Cameras, debugging and information for advanced users.</p>
+<p>HRDP is only supported on the following platforms: </p>
+<p><strong>Note: HDRP will only work on the following platforms if the device used supports Compute Shaders. I.e: HDRP will only work on iOS if the iPhone model used supports Compute Shaders.</strong></p>
+<ul>
+<li>Windows and Windows Store, with DirectX 11 or DirectX 12 and Shader Model 5.0</li>
+<li>macOS and iOS using Metal graphics</li>
+<li>Android, Linux and Windows platforms with Vulkan</li>
+<li>Modern consoles (Sony PS4 and Microsoft Xbox One)</li>
+</ul>
+<p><strong>HDRP does not support OpenGL or OpenGL ES devices.</strong></p>
+<h1 id="getting-started-with-high-definition-render-pipeline">Getting Started with High Definition Render Pipeline</h1>
+<p>This page details the initial setup of a project using the High Definition Render Pipeline (HDRP) and notes on upgrading existing projects to HDRP. </p>
+<h2 id="setting-up-a-new-project">Setting up a new Project</h2>
+<h3 id="using-unity-hub">Using Unity Hub</h3>
+<p>To set up a new HDRP project using Unity Hub, click the New button, then select High Definition - Preview from the Template drop-down box. After clicking Create Project, Unity will automatically create a Project with the High Definition Render Pipeline package installed. </p>
+<p><img alt="" src="../Images/GettingStarted1.png" /></p>
+<h2 id="upgrading-an-existing-project">Upgrading an Existing Project</h2>
+<p>To upgrade an existing Project, you must first download the High Definition Render Pipeline using the Package Manager UI. </p>
+<p>Navigate to <strong>Window &gt; Package Manager</strong> to open the Package Manager UI. Then click the All button to open the packages list. </p>
+<p>Left click on Render-pipelines.high-definition  to select it, then click the Install button to add HDRP to your project. </p>
+<p><img alt="" src="../Images/GettingStarted2.png" /></p>
+<p>After you have installed HDRP from the Package Manager UI you must add the HDRP  Asset to the Scriptable Render Pipeline Graphics settings field. </p>
+<p>Navigate to Edit &gt; Settings &gt; Graphics Settings, then Assign the HDRP Asset to the Scriptable Render Pipeline field by dragging in the HDRP Asset, or using the radio button to select the Asset from the popup window. </p>
+<h2 id="building-from-source-code">Building from source code</h2>
+<p>The latest version of the Scriptable Render Pipeline (SRP) repo can be found at the following link: https://github.com/Unity-Technologies/ScriptableRenderPipeline</p>
+<h3 id="github-desktop-or-git-command-line-tools">Github Desktop or Git command line tools</h3>
+<h4 id="cloning-the-repo-using-the-github-desktop-app">Cloning the repo using the GitHub Desktop App:</h4>
+<p>Open the GitHub Desktop App and click Clone a Repository. </p>
+<p>Click the URL tab in the Clone a Repository window
+Enter the following URL: https://github.com/Unity-Technologies/ScriptableRenderPipeline
+Click the Choose… button to navigate to your project’s Asset folder. 
+Click the Clone button. </p>
+<p>After the repo has been cloned you must run the following console commands from the ScriptableRenderPipeline folder:</p>
+<p><code>git checkout Unity-2018.1.0b2 (or the latest tag)</code></p>
+<p><code>git submodule update --init --recursive --remote</code></p>
+<h4 id="cloning-the-repo-using-git-console-commands">Cloning the repo using Git console commands:</h4>
+<p>Enter the following commands in your console application of choice:<br />
+<code>cd &lt;Path to your Unity project&gt;/Assets</code></p>
+<p><code>git clone https://github.com/Unity-Technologies/ScriptableRenderPipeline</code></p>
+<p><code>cd ScriptableRenderPipeline</code></p>
+<p><code>git checkout Unity-2018.1.0b2 (or the latest tag)</code></p>
+<p><code>git submodule update --init --recursive --remote</code></p>
+<p>Once you have cloned the repo, re-open your project and follow the below instructions: </p>
+<p>Navigate to <strong>Edit &gt; Project Settings &gt; Graphics</strong> and add the HDRenderPipelineAsset Asset to the Render Pipeline Settings field. </p>
+<p>Create a copy of the HDRenderPipelineAsset and store it outside of the Scriptable Render Pipeline folder. This ensures that your HDRP settings are not lost when merging new changes from the SRP repo. 
+HDRP will be ready to use in your project after following the above instructions.</p>
+<h2 id="upgrading-shaders">Upgrading Shaders</h2>
+<p>The built-in Unity shaders are incompatible with Scriptable Render Pipelines, as such, any preexisting Shaders in your project must be updated to work with the HDRP.</p>
+<p>Navigate to <strong>Edit &gt; Render Pipelines &gt; Upgrade Project Materials to High Definition Materials</strong> to run the automatic upgrade script. This script with automatically update all preexisting shaders in your project to the new HDRP shaders. </p>
+<h1 id="the-hd-render-pipeline-lit-shader">The HD Render Pipeline Lit Shader</h1>
+<p>The lit shader is the default shader when using HDRenderPipeline (HDRP). This shader can be set with subsurface scattering, iridescence, vertex or pixel displacement and many other new parameters. This shader allows to users to produce more realistic assets with the use of HDRP. A version call LitTessellation is used to activate the tessellation.</p>
+<h2 id="creating-a-lit-shader">Creating a Lit Shader</h2>
+<p>In HDRP, when a new material is created it is by default a lit shader.</p>
+<p><img alt="" src="/Images/LitShader1.png" /></p>
+<p><img alt="" src="../Images/LitShader2.png" /></p>
+<h2 id="how-to-set-a-lit-shader">How to set a Lit Shader?</h2>
+<h3 id="surface-options">Surface options</h3>
+<p><strong>Surface type:</strong></p>
+<p><img alt="" src="/Images/LitShader3.png" /></p>
+<p>Surface can be set as Opaque or Transparent. Transparent is an alpha blend and it is more costly.</p>
+<p><strong>Alpha Cutoff:</strong></p>
+<p><img alt="" src="../Images/LitShader4.png" /></p>
+<p>This check box enable the alpha cutoff to use an alpha test. The handle set the value of the test. All the values under the handle value is totally transparent and the values equal or above the handle value is opaque.</p>
+<p><strong>Double sided:</strong></p>
+<p><img alt="" src="../Images/LitShader5.png" /></p>
+<p>This option allows the double side. The faces are rendered on the two sides. The normal mode manages the normal behaviour on the backfaces. By default the mode is mirror.</p>
+<p><strong>Material type:</strong></p>
+<p>Material type introduces new behaviour for shaders to create realistic assets.</p>
+<ul>
+<li>
+<p>Standard: Common use with basic parameters. The standard type uses a metallic workflow.</p>
+</li>
+<li>
+<p>Subsurface scattering (SSS): Mainly use to do a skin shader. This material type simulates the light transport inside a material and create softer micro shadows. 
+Also a new parameter appears: Enable transmission. This parameter simulate the translucency of an object and it is managed by a thickness map.
+SSS and transmission are setting by a diffusion profile explain later in this document.</p>
+</li>
+<li>
+<p>Anisotropy: The anisotropy determines the shape of the highlight. The surface vector is managed by a tangent map, an anisotropy map modulate the anisotropy intensity and a handle modulate and orient to horizontally or vertical the anisotropic effect. These parameters are more explain later in the documentation.</p>
+</li>
+<li>
+<p>Iridescence: Use to create an iridescent effect. The effect is modulate by an iridescence mask, iridescence thickness map and an handle iridescence thickness.</p>
+</li>
+<li>
+<p>Specular Color: Instead of standard type, the specular color type uses a specular workflow. In this way the specular can be colorize even for a not metallic matter.</p>
+</li>
+<li>
+<p>Translucent: This type is used to simulate only the transmission. It can be handy for vegetation and more light than a SSS type.This type use a profile like the SSS type to manage the transmission.</p>
+</li>
+</ul>
+<p><strong>Enable Decal:</strong></p>
+<p>Allow the material to receive decals.</p>
+<p><strong>Enable MotionVector For Vertex Animation:</strong></p>
+<p>Use it to remove ghosting coming from vertex animation.</p>
+<p><strong>Displacement mode:</strong></p>
+<ul>
+<li>
+<p>None: no change.</p>
+</li>
+<li>
+<p>Vertex displacement: Use a height map to displace the vertices.</p>
+</li>
+<li>
+<p>Pixel displacement: Use a height map to displace the pixels. Use it only on plane surface. The surface can be only digged.</p>
+</li>
+</ul>
+<h2 id="vertex-animation-enable-wind">Vertex animation / Enable wind</h2>
+<p>Prototype feature, don’t use it.</p>
+<h2 id="inputs">Inputs</h2>
+<p><strong>Base color + opacity</strong>: RGB channels are used as base color and alpha channel is used for opacity.</p>
+<p><strong>Smoothness</strong> handle: This handle modulate (0 to 1) the smoothness value coming from the Mask map alpha channel.</p>
+<p><strong>Mask map:</strong></p>
+<ul>
+<li>
+<p>Red channel: Metallic mask. 0 = not metallic, 1 = metallic.</p>
+</li>
+<li>
+<p>Green channel: Ambient occlusion.</p>
+</li>
+<li>
+<p>Blue channel: Detail map mask.</p>
+</li>
+<li>
+<p>Alpha channel: Smoothness.</p>
+</li>
+</ul>
+<p><strong>Normal map space:</strong></p>
+<p>By default the normal map space is in tangent space. The normal map space can be set to object space.</p>
+<p><strong>Normal map:</strong></p>
+<p>Use to assign the normal map. The handle modulate the normal intensity between 0 and 2.</p>
+<p><strong>Bent normal map:</strong></p>
+<p>The bent normal is used to have a better ambient occlusion. It works only with diffuse lighting like lightmap or light probe.</p>
+<p><strong>Coat Mask:</strong></p>
+<p>By default the value is 0. The mask is used to modulate the clear coat effect base on the handle value (0 to 1).</p>
+<p><strong>Base UV mapping:</strong></p>
+<p>UV can be set to UV0, UV1 (used by the lightmap), UV2, UV3, planar or triplanar.</p>
+<p>Planar and triplanar use a world scale. This ratio depends about the size of the textures and the texel ratio wanted. By default it is 1, that means the material is applied on 1 meter. A value of 0.5 applies the material on 2 meters. </p>
+<p><strong>Tiling:</strong></p>
+<p>Set the X/Y values to tile the material.</p>
+<p><strong>Offset:</strong></p>
+<p>Set on X/Y offset for the UV.</p>
+<h2 id="detail-inputs">Detail inputs</h2>
+<p>The detail map is a composited map used to add micro details into the material. The detail map visibility is managed by the blue channel of the Mask map.</p>
+<p><img alt="" src="../Images/LitShader6.png" /></p>
+<p><strong>Detail map:</strong></p>
+<ul>
+<li>
+<p>Red channel: Grey scale used as albedo.</p>
+</li>
+<li>
+<p>Green channel: Green channel of the detail normal map.</p>
+</li>
+<li>
+<p>Blue channel: Detail smoothness.</p>
+</li>
+<li>
+<p>Alpha channel: Red channel  of the detail normal map.</p>
+</li>
+</ul>
+<p>Channels are organised like this due the different compressions quality of each channels.</p>
+<p><strong>Detail UV mapping:</strong></p>
+<p>UV0, UV1, UV2 or UV3 can be set. If the material UV are set to planar or triplanar, the detail UV are also set to planar or triplanar.</p>
+<p><strong>Lock to base Tiling/Offset:</strong></p>
+<p>By default a detail texture is linked to the material aspect because it is done to add a micro detail in it. If for any reason the link have to be removed, just uncheck this checkbox.</p>
+<p><strong>Tiling:</strong></p>
+<p>Set the tiling of the detail texture inside a tile of the material. 
+For example if the material is tiled by 2 on a plane and the detail texture is also tile by 2, the detail will appears tile by 4 on the plane.
+In this condition the tile of the material can be changed without set another time the detail UV to keep the good appearance.</p>
+<p><strong>Offset:</strong></p>
+<p>Set on X/Y offset for the detail UV.</p>
+<p><strong>Detail AlbedoScale:</strong></p>
+<p>This handle modulate (0 to 2) the detail albedo (red channel) like an overlay effect. The default value is 1 and has no scale.</p>
+<p><strong>Detail NormalScale:</strong></p>
+<p>This handle modulate (0 to 2)  the intensity of the detail normal map. The default value is 1 and has no scale.</p>
+<p><strong>Detail SmoothnessScale:</strong></p>
+<p>This handle modulate (0 to 2)  the detail smoothness (blue channel) like an overlay effect. The default value is 1 and has no scale.</p>
+<h2 id="emissive-inputs">Emissive inputs</h2>
+<p><strong>Emissive color:</strong></p>
+<p>The emissive color can be managed by a map or a single color. If both are used they are multiplied.</p>
+<p><strong>Emissive intensity:</strong></p>
+<p>Set the power of the emissive effect. By default the value is 0 and doesn’t produce any emissive effect.</p>
+<p><strong>Albedo Affect Emissive:</strong></p>
+<p>By default it is on and allows the albedo to produce color for the emissive. In this case the albedo is multiplied by emissive color and color picker to produce the emissive final color.</p>
+<p>For example the emissive color map can be used as an emissive mask, the albedo used to do the color and  the color picker to modulate it.</p>
+<h2 id="advanced-options">Advanced options:</h2>
+<p><strong>Enable GPU instancing:</strong></p>
+<p>If objects are not static batched and identical, all objects with this material become instanced.</p>
+<p>For example, objects with an animation base on the object pivot can’t be static batched (unique pivot for all) but they can be instanced by GPU.</p>
+<p><strong>Enable Specular Occlusion from Bent normal:</strong></p>
+<p>This option used the bent normal assign in the bent normal slot to do a specular occlusion for the reflection probe.</p>
+<h2 id="specific-setting-from-material-type">Specific setting from material type</h2>
+<h3 id="subsurface-scattering">Subsurface scattering</h3>
+<p><img alt="" src="../Images/LitShader7.png" /></p>
+<p><strong>Enable transmission: </strong></p>
+<p>On/off the transmission effect. The transmission is managed by a profile and a thickness map. More the object is set thin more lighting cross it.</p>
+<p><strong>Specific subsurface settings:</strong></p>
+<p><img alt="" src="../Images/LitShader8.png" /></p>
+<p>Diffusion profile:</p>
+<p>Rollout menu to choose the profile. Profiles are set in the SSSSettings.asset file. Goto button select the the SSSSettings file.</p>
+<p>Subsurface mask map:</p>
+<p>This map uses the red channel to manage the visibility (0 = not visible, 1= totally visible) of the SSS effect. This map is modulated by the handle value (0 to 1, 1 is the default).</p>
+<p>Thickness map:</p>
+<p>This map uses the red channel to set the thickness inside the range set in the profile. 0 is the min range value and 1 is the max range value.</p>
+<p><strong>The profile:</strong></p>
+<p><img alt="" src="../Images/LitShader9.png" /></p>
+<ul>
+<li>
+<p>Name: Name of the profile</p>
+</li>
+<li>
+<p>Scattering value: It is a HDR value to manage the color and the scatter of the SSS.</p>
+</li>
+<li>
+<p>Max radius: It is an information value and linked to the scattering value. It is the effective radius in millimeters. The blur is energy-preserving, so a wide result in a large area provides a small contribution of individual samples. A short distance increases the sharpness of the result.</p>
+</li>
+<li>
+<p>Index of Refraction: To set the real index of refraction. It is 1.4 for skin and between 1.3 and 1.5 for most other material.</p>
+</li>
+<li>
+<p>World scale: Set the size of the world unit in meters. Default it is 1 and shouldn’t be modified except if the world unit used is customized.</p>
+</li>
+</ul>
+<p><strong>Subsurface scattering only:</strong></p>
+<p>Texturing mode: Specifies when the diffuse texture should be applied.</p>
+<p><strong>Transmission only:</strong></p>
+<p>Transmission mode: Regular or Thin object. Really thin object need a specific use.</p>
+<p>Transmission tint: Set a HDR value to color the transmission.</p>
+<p>Min/Max thickness (mm): Set the range of the thickness. This range is modulate by the thickness map (0 = min, 1 = max).</p>
+<p>Thickness remap: This setting allows to remap the thickness without to change the min/max values. The range can be moved without losing the thickness values.</p>
+<p>Profile preview: Shows the fraction of lights scattered from the source located in the center.The distance to the boundary of the image corresponds to the max radius. Display is not HDR, so the intensity of pixels around the center may be clipped.</p>
+<p><img alt="" src="../Images/LitShader10.png" /></p>
+<p>Transmission preview: Shows the fraction of light passing through the object for thickness values from the remap. Can be viewed as a cross section of a slab of material illuminated by white light from the left.</p>
+<p><img alt="" src="../Images/LitShader11.png" /></p>
+<h3 id="anisotropy">Anisotropy</h3>
+<p>Anisotropic materials don’t have an uniform specular shape.</p>
+<p>Real anisotropy example:</p>
+<p><img alt="" src="../Images/LitShader12.png" /></p>
+<p>Anisotropy is used to deform the specular shape on an axe.</p>
+<p><img alt="" src="../Images/LitShader13.png" /></p>
+<p><strong>Tangent map: </strong></p>
+<p>It is a vector map. Red and Green channel orient the specular shape.</p>
+<p><strong>Anisotropy:</strong></p>
+<p>This handle modulate the intensity of the anisotropic effect and modify the shape orientation, horizontally or vertically, coming from the tangent map.</p>
+<p><img alt="" src="../Images/LitShader14.png" /></p>
+<p><strong>Anisotropy map:</strong></p>
+<p>This map uses the red channel to modulate the anisotropic effect intensity.</p>
+<h3 id="iridescence">Iridescence</h3>
+<p>The iridescence (Thin-film interference) is a natural phenomenon in which lightwaves reflected by the upper and lower boundaries of a thin film interfere with one another, either enhancing or reducing the reflected<a href="https://en.wikipedia.org/wiki/Reflected_light"> </a>light. </p>
+<p><img alt="" src="../Images/LitShader15.png" /></p>
+<p><img alt="" src="../Images/LitShader16.png" /></p>
+<p><strong>Iridescence Mask:</strong></p>
+<p>This map uses the red channel to manage the visibility of the iridescence effect. The handle can modulate the mask or the visibility if no mask is assigned.</p>
+<p><strong>Iridescence Layer thickness map:</strong></p>
+<p>If no map is assigned, by default the value is 1. The iridescence gradient color is linked to the thickness. When the thickness change the gradient color change too. The handle modulate the thickness also and it is multiplied when a map is assigned.</p>
+<p><img alt="" src="../Images/LitShader17.png" /></p>
+<p>FYI: If the base color is white no iridescence can be visible. For a white base color no lighting enter the matter. All the lighting is reflected to produce a pure white color, so no iridescence can be produce.</p>
+<h3 id="specular-color">Specular color</h3>
+<p>When the specular color shader type is chosen, the specular color is defined by a dedicated map not anymore by the albedo value.</p>
+<p><img alt="" src="../Images/LitShader18.png" /></p>
+<p><strong>Specular color:</strong></p>
+<p>RGB map to set the specular color. When no map is assigned the default value is 1.</p>
+<p><strong>Picker color:</strong></p>
+<p>Uniform color used for the specular. It is multiply by the Specular color map.</p>
+<h2 id="translucent">Translucent</h2>
+<p>The translucency is the transmission of a part of light across the matter.</p>
+<p><img alt="" src="../Images/LitShader19.png" /></p>
+<p><img alt="" src="../Images/LitShader20.png" /></p>
+<p>The translucency is manage by a profile and a thickness map like for the subsurface scattering.</p>
+<h2 id="how-to-set-a-lit-shader-tessellation">How to set a Lit Shader Tessellation?</h2>
+<p>From a lit shader, use the shader rollout menu to choose the LayeredLitTessellation shader.</p>
+<p><img alt="" src="../Images/LitShader21.png" /></p>
+<p>In case of lit shader tessellation only standard, subsurface scattering and translucent types are available.</p>
+<p><strong>Displacement mode:</strong></p>
+<p><img alt="" src="../Images/LitShader22.png" /></p>
+<p>None: No displacement is applied. The tessellation is used only to smooth the surface.</p>
+<p>Tessellation displacement: A height map (red channel) is used in the inputs to displace the mesh vertices.</p>
+<p><img alt="" src="../Images/LitShader23.png" /></p>
+<p><img alt="" src="../Images/LitShader24.png" /></p>
+<ul>
+<li>
+<p>Lock with object scale: the height map appearance doesn’t change when the object is scaled.</p>
+</li>
+<li>
+<p>Lock with height map tiling rate: the height map appearance doesn’t change when the material is tiled.</p>
+</li>
+</ul>
+<p><strong>Tessellations options:</strong></p>
+<p><img alt="" src="../Images/LitShader25.png" /></p>
+<p>Tessellation mode:</p>
+<ul>
+<li>
+<p>None: no smooth is aplied.</p>
+</li>
+<li>
+<p>Phong: the tessellation applied a smooth effect.</p>
+</li>
+</ul>
+<p>Tessellation factor:</p>
+<p>Between 0 and 64 this factor modulate the tessellation quantity. Higher value mean a surface more tessellated. Above 15 is costly. For XBox one and Playstation4 the maximum is set to 15.</p>
+<p>Start fade distance:</p>
+<p>It is the distance (in Unity unit) to the camera where the tessellation start to fade out.</p>
+<p>End fade distance:</p>
+<p>It is the maximum distance (in Unity unit) to the camera where triangle are tessellated.</p>
+<p>Triangle size:</p>
+<p>Desired screen space size of triangle (in pixel). A smaller value mean smaller triangle.</p>
+<p><strong>Height map parameterization:</strong></p>
+<p>Two parametrizations are available.</p>
+<p>Min/Max:</p>
+<p><img alt="" src="../Images/LitShader26.png" /></p>
+<p>In this mode the base of the height map is linked to the base of the mesh. It is used if the height map has uniform values on the map.</p>
+<p>Min: Set the height value for the 0 value on the map.</p>
+<p>Max: Set the height value for the 1 (255) value on the map.</p>
+<p>Offset: Can up and down the height map without modify the min/max values.</p>
+<p>Amplitude:</p>
+<p><img alt="" src="../Images/LitShader27.png" /></p>
+<p>Amplitude mode is more used in case of height map with a dedicated center. In this case the height map uses often none uniform values. In case of non uniform values a range of the map is not used to store values, it is clamped in positive or negative.</p>
+<p>Amplitude: The amplitude is the double value of the maximum value in negative or in positive.</p>
+<p>Base: It is the reference of the base mesh into the height map. By default the base is at 0.5.</p>
+<p>Offset: Can up and down the height map without modify the other values.</p>
+<h1 id="sky-and-fog">Sky and Fog</h1>
+<p>In HDRP, sky and fog are setup via the interpolation volume framework. The goal is for the user to be able to dynamically change the look of the sky and fog depending on the camera position.</p>
+<p>We also provide the necessary tools to offer consistent baking of lightmaps and probes.</p>
+<p>The Sky Framework used by HDRP is also designed in a way that it is easy for users to write their own custom sky and use it in their project with minimal effort.</p>
+<p>As part of the Volume framework, all local settings components described below are actually VolumeComponents which need to be added to a VolumeComponent on a regular GameObject. As such, all their parameters can be interpolated between different volumes.</p>
+<h2 id="setting-up-the-sky">Setting up the Sky</h2>
+<p>Setting up a sky has two goals: The first one is to define what will be displayed in the background of the scene for a given camera. The second one is to define environment lighting, namely sky reflection and sky ambient probe which is then later used to render lightmaps (real-time or baked).</p>
+<p>Settings are split between global settings which are per project/platform and local settings that use the volume framework and can change depending on the scene or camera position.</p>
+<h3 id="global-sky-settings">Global Sky Settings</h3>
+<p>Global settings for the sky are in the HDRenderPipeline configuration asset:</p>
+<p><img alt="" src="../Images/SkyAndFog1.png" /></p>
+<p><strong>Sky Reflection Size</strong></p>
+<p>This parameter drives the size of the cubemap generated from the sky and used for fallback reflection when no local reflection probes are present. It has no effect on the quality of the sky rendered in the background.</p>
+<p><strong>Sky Lighting Override Mask</strong></p>
+<p>In some cases, users may want to dissociate lighting environment from what is rendered in the background (a typical example is to have a very dark sky at night but have a brighter lighting so that the player can still see).</p>
+<p>In order to achieve this, users can define the sky lighting override mask which is a Layer mask. If any volumes are present in this layer then environment lighting will use these volumes instead of those from the main camera. If this mask is set to <strong>Nothing</strong>or if there are no volume in this mask then lighting will come from volumes setup in the main camera volume layer mask.</p>
+<p>In practice this means that user can define two sets of masks, one for the visual sky and the other for the lighting. Both sets of volume will then be interpolated independently from each other.</p>
+<p>Note that lighting override does not affect baked lighting.</p>
+<h3 id="local-sky-settings">Local Sky Settings</h3>
+<p>Once global parameters are set, users need to setup volumes with the correct components to setup local parameters for the sky. Currently HDRP provides two different kind of skies.</p>
+<p><strong>Procedural Sky</strong></p>
+<p>This sky is similar to the procedural sky provided with the built-in Unity Render Pipelines. </p>
+<p><img alt="" src="../Images/SkyAndFog2.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">Property</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Enable Sun Disk</strong></td>
+<td align="left">Display sun disk</td>
+</tr>
+<tr>
+<td align="left"><strong>Sun Size</strong></td>
+<td align="left">Size of the sun disk</td>
+</tr>
+<tr>
+<td align="left"><strong>Sun Size Convergence</strong></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><strong>Atmospheric Thickness</strong></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><strong>Sky Tint</strong></td>
+<td align="left">Color of the sky hemisphere</td>
+</tr>
+<tr>
+<td align="left"><strong>Ground Color</strong></td>
+<td align="left">Color of the ground hemisphere</td>
+</tr>
+<tr>
+<td align="left"><strong>Exposure</strong></td>
+<td align="left">Exposure applied to the sky</td>
+</tr>
+<tr>
+<td align="left"><strong>Multiplier</strong></td>
+<td align="left">Multiplier applied to the sky</td>
+</tr>
+<tr>
+<td align="left"><strong>Update Mode</strong></td>
+<td align="left">Rate at which the sky environment (reflection en ambient probe) should be updated</td>
+</tr>
+<tr>
+<td align="left">On Changed</td>
+<td align="left">Sky environment is updated when one of its parameter changes</td>
+</tr>
+<tr>
+<td align="left">On Demand</td>
+<td align="left">Sky Environment is explicitly updated by the script</td>
+</tr>
+<tr>
+<td align="left">Realtime</td>
+<td align="left">Sky environment is updated regularly</td>
+</tr>
+<tr>
+<td align="left">Update Period</td>
+<td align="left">Period (in seconds) at which the realtime sky is updated (0 means every frame)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>HDRI Sky</strong></p>
+<p>Simple sky represented by a cubemap texture.</p>
+<p><img alt="" src="../Images/SkyAndFog3.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">Property</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Hdri sky</strong></td>
+<td align="left">Cubemap representing the sky</td>
+</tr>
+<tr>
+<td align="left"><strong>Exposure</strong></td>
+<td align="left">Exposure applied to the sky</td>
+</tr>
+<tr>
+<td align="left"><strong>Multiplier</strong></td>
+<td align="left">Multiplier applied to the sky</td>
+</tr>
+<tr>
+<td align="left"><strong>Rotation</strong></td>
+<td align="left">Rotation applied to the cubemap in degrees</td>
+</tr>
+<tr>
+<td align="left"><strong>Update Mode</strong></td>
+<td align="left">Rate at which the sky environment (reflection en ambient probe) should be updated</td>
+</tr>
+<tr>
+<td align="left">On Changed</td>
+<td align="left">Sky environment is updated when one of its parameter changes</td>
+</tr>
+<tr>
+<td align="left">On Demand</td>
+<td align="left">Sky Environment is explicitly updated by the script</td>
+</tr>
+<tr>
+<td align="left">Realtime</td>
+<td align="left">Sky environment is updated regularly</td>
+</tr>
+<tr>
+<td align="left">Update Period</td>
+<td align="left">Period (in seconds) at which the realtime sky is updated (0 means every frame)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="baking-global-illumination-with-the-sky">Baking Global Illumination with the sky</h3>
+<p>In HDRP the sky is completely controlled by the volume system. It means that in the editor, the current state of the sky will depend on the camera position. The consequence is that for users to get a consistent lighting baking, we can’t rely on what is in the scene.</p>
+<p>Instead the sky used for baking is set explicitly by the user through the Baking Sky component.</p>
+<p><img alt="" src="../Images/SkyAndFog4.png" /></p>
+<p>User should select a volume profile which contains the sky intended to be used for baking and then choose the right type (in case the profile contains different kinds of skies). If the component is added to a game object that already has a Volume, the profile property will be automatically populated with the corresponding profile asset.</p>
+<p>This sky setting will live outside of the volume framework and thus will never be interpolated based on the camera position. Any time the baking is required, this is the sky that will be used.</p>
+<p>Only one such component can be present in the editor at any given time. Any additional component of the same type will generate a warning and be ignored.</p>
+<h2 id="setting-up-the-fog">Setting up the Fog</h2>
+<p>Fog is the effect of overlaying a color onto objects dependant on the distance from the camera. This is used to simulate fog or mist in outdoor environments and is also typically used to hide clipping of objects when a camera’s far clip plane has been moved forward for performance.</p>
+<p>In HDRP, users can choose between two different kind of fogs, linear and exponential fog. All types of materials (lit or unlit) will react correctly to the fog. Depending on the type of fog, density will evolve differently with respect to distance from camera and world space height.</p>
+<p>Instead of using a constant color, both types of fog can choose to use the background sky as a source for color. In this case, the color will be sampled from different mip maps of the cubemap generated from the current sky settings. Chosen mip will vary linearly between the blurriest one to the highest resolution one depending on the distance from camera and the "Mip Fog" parameters. Users can also choose to limit the resolution of the higher mip used.</p>
+<p>For both types of fog, density is computed from camera distance and world space height independently and then multiplied together to obtain the final result.</p>
+<p><strong>Linear Fog</strong></p>
+<p>Density will increase linearly with view distance and world space height depending on the provided parameters.</p>
+<p><img alt="" src="../Images/SkyAndFog5.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">Property</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Density</strong></td>
+<td align="left">Global multiplier for the fog density</td>
+</tr>
+<tr>
+<td align="left"><strong>Color Mode</strong></td>
+<td align="left">Source of the fog color</td>
+</tr>
+<tr>
+<td align="left">Constant Color</td>
+<td align="left">Fog is a constant color</td>
+</tr>
+<tr>
+<td align="left">Color</td>
+<td align="left">Color of the fog</td>
+</tr>
+<tr>
+<td align="left">Sky Color</td>
+<td align="left">Fog color is sampled from the sky</td>
+</tr>
+<tr>
+<td align="left">Mip Fog Near</td>
+<td align="left">Distance at which the blurriest sky mip is used</td>
+</tr>
+<tr>
+<td align="left">Mip Fog Far</td>
+<td align="left">Distance at which the higher sky mip (see "Mip Fog Max Mip" ) is used</td>
+</tr>
+<tr>
+<td align="left">Mip Fog Max Mip</td>
+<td align="left">Maximum mip map used to sample the color (1.0 being highest resolution and 0.0 lowest resolution).</td>
+</tr>
+<tr>
+<td align="left"><strong>Fog Start</strong></td>
+<td align="left">Distance from camera at which fog density starts to increase from zero.</td>
+</tr>
+<tr>
+<td align="left"><strong>Fog End</strong></td>
+<td align="left">Distance from camera at which fog density is maximum.</td>
+</tr>
+<tr>
+<td align="left"><strong>Fog Height Start</strong></td>
+<td align="left">Height at which fog density starts to decrease</td>
+</tr>
+<tr>
+<td align="left"><strong>Fog Height End</strong></td>
+<td align="left">Height at which fog density is zero</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exponential Fog</strong></p>
+<p>Density will increase exponentially with view distance and world space height depending on the provided parameters.</p>
+<p><img alt="" src="../Images/SkyandFog6.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">Property</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Density</strong></td>
+<td align="left">Global multiplier for the fog density</td>
+</tr>
+<tr>
+<td align="left"><strong>Color Mode</strong></td>
+<td align="left">Source of the fog color</td>
+</tr>
+<tr>
+<td align="left">Constant Color</td>
+<td align="left">Fog is a constant color</td>
+</tr>
+<tr>
+<td align="left">Color</td>
+<td align="left">Color of the fog</td>
+</tr>
+<tr>
+<td align="left">Sky Color</td>
+<td align="left">Fog color is sampled from the sky</td>
+</tr>
+<tr>
+<td align="left">Mip Fog Near</td>
+<td align="left">Distance at which the blurriest sky mip is used</td>
+</tr>
+<tr>
+<td align="left">Mip Fog Far</td>
+<td align="left">Distance at which the higher sky mip (see "Mip Fog Max Mip" ) is used</td>
+</tr>
+<tr>
+<td align="left">Mip Fog Max Mip</td>
+<td align="left">Maximum mip map used to sample the color (1.0 being highest resolution and 0.0 lowest resolution).</td>
+</tr>
+<tr>
+<td align="left"><strong>Fog Distance</strong></td>
+<td align="left">Distance from camera at will reach maximum</td>
+</tr>
+<tr>
+<td align="left"><strong>Fog Base Height</strong></td>
+<td align="left">World space height at which fog density starts to decrease from 1.0</td>
+</tr>
+<tr>
+<td align="left"><strong>Fog Height Attenuation</strong></td>
+<td align="left">Fall off of height fog attenuation (bigger values will make attenuation sharper)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="visual-environment">Visual Environment</h2>
+<p>Once the proper components have been setup, users need to specify what kind of sky and fog should be used for rendering. This is done through the Visual Environment component.</p>
+<p><img alt="" src="../Images/SkyAndFog7.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">Property</th>
+<th align="left">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Sky Type</strong></td>
+<td align="left">Type of sky used for rendering. This list will be automatically updated with any custom sky written by users</td>
+</tr>
+<tr>
+<td align="left"><strong>Fog Type</strong></td>
+<td align="left">Type of fog used for rendering</td>
+</tr>
+</tbody>
+</table>
+<p>To help setting things up more easily, users can use the contextual menu to directly create a game object named "Scene Settings" and go from there. This game object is already setup with a default procedural sky and exponential fog inside a global Volume (it also contains default shadow settings).</p>
+<p><img alt="" src="../Images/SkyAndFog8.png" /></p>
+<h2 id="writing-custom-sky-renderers">Writing Custom Sky Renderers</h2>
+<p>The sky system is setup in a way that allows users to develop their own kind of sky with their own parameters and shaders.</p>
+<p>Three things are needed in order to write your own sky.</p>
+<p><strong>SkySettings</strong></p>
+<p>Create a new class that inherits from <em>SkySettings</em>. This class will contain all parameters specific to the particular sky renderer user is writing. Please refer to the Volume system documentation to learn how to declare volume parameters.</p>
+<p>Three things are mandatory to write:</p>
+<ul>
+<li>
+<p>SkyUniqueID attribute: This must be an integer unique to this particular sky. Must not clash with any other sky settings. The SkyType enum is available for users to see what values are already used by HDRP.</p>
+</li>
+<li>
+<p>GetHashCode: This is used by the sky system to determine when to re-render the sky reflection cubemap.</p>
+</li>
+<li>
+<p>CreateRenderer: This is used by the sky system to instantiate the proper renderer.</p>
+</li>
+</ul>
+<p>Exemple: HDRI Sky</p>
+<pre><code> [SkyUniqueID(87248]&lt;br/&gt;    public class HDRISky : SkySettings
+    {
+        [Tooltip(&quot;Cubemap used to render the sky.&quot;)]
+        public CubemapParameter hdriSky = new CubemapParameter(null);
+
+        public override SkyRenderer CreateRenderer()
+        {
+            return new HDRISkyRenderer(this);
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = base.GetHashCode();
+
+            unchecked
+            {
+                hash = hdriSky.value != null ? hash * 23 + hdriSky.GetHashCode() : hash;
+            }
+
+            return hash;
+        }
+    }
+</code></pre>
+
+<p>​    </p>
+<p><strong>SkyRenderer</strong></p>
+<p>This is the class that will actually render the sky, either into a cubemap for lighting or on the background. This is where users must implement all their specific rendering.</p>
+<p>It must implement this interface:</p>
+<pre><code>    public abstract class SkyRenderer
+    {
+        // Method used to initialize any resource for the sky rendering (shaders, …)
+        public abstract void Build();
+        // Method used to clean up any resource previously allocated
+        public abstract void Cleanup();
+        // SkyRenderer is responsible for setting up render targets provided in builtinParams
+        public abstract void SetRenderTargets(BuiltinSkyParameters builtinParams);
+        // renderForCubemap: When rendering into a cube map, no depth buffer is available so user has to make sure not to use depth testing or the depth texture.
+        public abstract void RenderSky(BuiltinSkyParameters builtinParams, bool renderForCubemap);
+        // Returns true if provided sky setting parameters are valid.
+        public abstract bool IsValid();
+    }
+
+</code></pre>
+
+<p>Exemple: HDRISkyRenderer:</p>
+<pre><code>public class HDRISkyRenderer : SkyRenderer&lt;br/&gt;{
+    Material m_SkyHDRIMaterial; // Renders a cubemap into a render texture (can be cube or 2D)
+    MaterialPropertyBlock m_PropertyBlock;
+    HDRISky m_HdriSkyParams;
+
+    public HDRISkyRenderer(HDRISky hdriSkyParams)
+    {
+        m_HdriSkyParams = hdriSkyParams;
+        m_PropertyBlock = new MaterialPropertyBlock();
+    }
+
+    public override void Build()
+    {
+        var hdrp = GraphicsSettings.renderPipelineAsset as HDRenderPipelineAsset;
+        m_SkyHDRIMaterial = CoreUtils.CreateEngineMaterial(hdrp.renderPipelineResources.hdriSky);
+    }
+
+    public override void Cleanup()
+    {
+        CoreUtils.Destroy(m_SkyHDRIMaterial);
+    }
+
+    public override void SetRenderTargets(BuiltinSkyParameters builtinParams)
+    {
+        if (builtinParams.depthBuffer == BuiltinSkyParameters.nullRT)
+        {
+            HDUtils.SetRenderTarget(builtinParams.commandBuffer, builtinParams.hdCamera, builtinParams.colorBuffer);
+        }
+        else
+        {
+            HDUtils.SetRenderTarget(builtinParams.commandBuffer, builtinParams.hdCamera, builtinParams.colorBuffer, builtinParams.depthBuffer);
+        }
+    }
+
+    public override void RenderSky(BuiltinSkyParameters builtinParams, bool renderForCubemap)
+    {
+        m_PropertyBlock.SetTexture(HDShaderIDs._Cubemap, m_HdriSkyParams.hdriSky);
+        m_PropertyBlock.SetVector(HDShaderIDs._SkyParam, new Vector4(m_HdriSkyParams.exposure, m_HdriSkyParams.multiplier, -m_HdriSkyParams.rotation, 0.0f)); // -rotation to match Legacy...
+
+        // This matrix needs to be updated at the draw call frequency.
+        m_PropertyBlock.SetMatrix(HDShaderIDs._PixelCoordToViewDirWS, builtinParams.pixelCoordToViewDirMatrix);
+
+        CoreUtils.DrawFullScreen(builtinParams.commandBuffer, m_SkyHDRIMaterial, m_PropertyBlock, renderForCubemap ? 0 : 1);
+    }
+
+    public override bool IsValid()
+    {
+        return m_HdriSkyParams != null &amp;&amp; m_SkyHDRIMaterial != null;
+    }
+}
+</code></pre>
+
+<p><strong>Rendering Shader</strong></p>
+<p>This is highly dependent on what the particular sky is supposed to look like. Here we’ll just show the example of HDRISky.</p>
+<p>Note that we implemented two passes, one that uses Depth Test for rendering the sky in the background (so that it’s occluded by geometry) and the other that does not for when the sky is rendered into the reflection cubemap.</p>
+<pre><code>Shader &quot;Hidden/HDRenderPipeline/Sky/HDRISky&quot;&lt;br/&gt;{
+    HLSLINCLUDE
+
+    #pragma vertex Vert
+    #pragma fragment Frag
+
+    #pragma target 4.5
+    #pragma only_renderers d3d11 ps4 xboxone vulkan metal
+
+    #include &quot;CoreRP/ShaderLibrary/Common.hlsl&quot;
+    #include &quot;CoreRP/ShaderLibrary/Color.hlsl&quot;
+    #include &quot;CoreRP/ShaderLibrary/CommonLighting.hlsl&quot;
+
+    TEXTURECUBE(_Cubemap);
+    SAMPLER(sampler_Cubemap);
+
+    float4   _SkyParam; // x exposure, y multiplier, z rotation
+    float4x4 _PixelCoordToViewDirWS; // Actually just 3x3, but Unity can only set 4x4
+
+    struct Attributes
+    {
+        uint vertexID : SV_VertexID;
+    };
+
+    struct Varyings
+    {
+        float4 positionCS : SV_POSITION;
+    };
+
+    Varyings Vert(Attributes input)
+    {
+        Varyings output;
+        output.positionCS = GetFullScreenTriangleVertexPosition(input.vertexID, UNITY_RAW_FAR_CLIP_VALUE);
+        return output;
+    }
+
+    float4 Frag(Varyings input) : SV_Target
+    {
+        // Points towards the camera
+        float3 viewDirWS = normalize(mul(float3(input.positionCS.xy, 1.0), (float3x3)_PixelCoordToViewDirWS));
+        // Reverse it to point into the scene
+        float3 dir = -viewDirWS;
+
+        // Rotate direction
+        float phi = DegToRad(_SkyParam.z);
+        float cosPhi, sinPhi;
+        sincos(phi, sinPhi, cosPhi);
+        float3 rotDirX = float3(cosPhi, 0, -sinPhi);
+        float3 rotDirY = float3(sinPhi, 0, cosPhi);
+        dir = float3(dot(rotDirX, dir), dir.y, dot(rotDirY, dir));
+
+        float3 skyColor = ClampToFloat16Max(SAMPLE_TEXTURECUBE_LOD(_Cubemap, sampler_Cubemap, dir, 0).rgb * exp2(_SkyParam.x) * _SkyParam.y);
+        return float4(skyColor, 1.0);
+    }
+
+    ENDHLSL
+
+    SubShader
+    {
+        Pass
+        {
+            ZWrite Off
+            ZTest Always
+            Blend Off
+            Cull Off
+
+            HLSLPROGRAM
+            ENDHLSL
+
+        }
+
+        Pass
+        {
+            ZWrite Off
+            ZTest LEqual
+            Blend Off
+            Cull Off
+
+            HLSLPROGRAM
+            ENDHLSL
+        }
+
+    }
+    Fallback Off
+}
+</code></pre>
+
+<p>After doing all this, the new Sky should automatically appear in the combo box in the <em>Visual Environment</em> component.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../LWRP/" class="btn btn-neutral float-right" title="About the Lightweight Render Pipeline">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../Core/ScriptableRenderPipeline/" class="btn btn-neutral" title="Scriptable Render Pipeline"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../Core/ScriptableRenderPipeline/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../LWRP/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

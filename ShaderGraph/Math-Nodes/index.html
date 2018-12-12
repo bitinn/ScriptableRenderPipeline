@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Math Nodes - Unity SRP Doc</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Math Nodes";
+    var mkdocs_page_input_path = "ShaderGraph/Math-Nodes.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Unity SRP Doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">This is an unofficial Unity SRP Doc</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Core</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Core/ScriptableRenderPipeline/">Scriptable Render Pipeline</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">HDRP</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../HDRP/HDRenderPipeline/">High Definition Render Pipeline</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">LWRP</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../LWRP/">About the Lightweight Render Pipeline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/TableOfContents/">TableOfContents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/autodesk-interactive-masked-shader/">Autodesk interactive masked shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/autodesk-interactive-shader/">Autodesk interactive shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/autodesk-interactive-transparent-shader/">Autodesk interactive transparent shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/baked-lit-shader/">Baked lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/camera-inspector/">Camera inspector</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/camera/">Camera</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/configuring-lwrp-for-use/">Configuring lwrp for use</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/creating-a-new-project-with-lwrp/">Creating a new project with lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/forward-renderer/">Forward renderer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/getting-started-with-lwrp/">Getting started with lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/inside-lwrp/">Inside lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/installing-lwrp-into-an-existing-project/">Installing lwrp into an existing project</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/integration-with-post-processing/">Integration with post processing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/integration-with-terrain/">Integration with terrain</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/integrations-with-shader-graph/">Integrations with shader graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/light-inspector/">Light inspector</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lit-shader/">Lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lwrp-asset/">Lwrp asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lwrp-builtin-feature-comparison/">Lwrp builtin feature comparison</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lwrp-internal-flowchart/">Lwrp internal flowchart</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/particles-lit-shader/">Particles lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/particles-simple-lit-shader/">Particles simple lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/particles-unlit-shader/">Particles unlit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/realtime-lighting-in-lwrp/">Realtime lighting in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/rendering-in-lwrp/">Rendering in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shader-stripping-keywords/">Shader stripping keywords</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shader-stripping/">Shader stripping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shaders-in-lwrp/">Shaders in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shading-model/">Shading model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/simple-lit-shader/">Simple lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/unlit-shader/">Unlit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/upgrading-your-shaders/">Upgrading your shaders</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ShaderGraph</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">Index</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Absolute-Node/">Absolute Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Add-Node/">Add Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../All-Node/">All Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Ambient-Node/">Ambient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../And-Node/">And Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Any-Node/">Any Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Arccosine-Node/">Arccosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Arcsine-Node/">Arcsine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Arctangent-Node/">Arctangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Arctangent2-Node/">Arctangent2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Artistic-Nodes/">Artistic Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Baked-GI-Node/">Baked GI Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Bitangent-Vector-Node/">Bitangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Blackboard/">Blackboard</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Blend-Node/">Blend Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Boolean-Node/">Boolean Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Branch-Node/">Branch Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Camera-Node/">Camera Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Ceiling-Node/">Ceiling Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Channel-Mask-Node/">Channel Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Channel-Mixer-Node/">Channel Mixer Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Channel-Nodes/">Channel Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Checkerboard-Node/">Checkerboard Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Clamp-Node/">Clamp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode-Port-Types/">CodeFunctionNode Port Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode.Binding/">CodeFunctionNode.Binding</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode.GetFunctionToConvert/">CodeFunctionNode.GetFunctionToConvert</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode.SlotAttribute/">CodeFunctionNode.SlotAttribute</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode/">CodeFunctionNode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Color-Mask-Node/">Color Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Color-Node/">Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Colorspace-Conversion-Node/">Colorspace Conversion Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Combine-Node/">Combine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Comparison-Node/">Comparison Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Constant-Node/">Constant Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Contrast-Node/">Contrast Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Cosine-Node/">Cosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Create-Node-Menu/">Create Node Menu</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Cross-Product-Node/">Cross Product Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Cubemap-Asset-Node/">Cubemap Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Custom-Nodes-With-CodeFunctionNode/">Custom Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../DDX-Node/">DDX Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../DDXY-Node/">DDXY Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../DDY-Node/">DDY Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Data-Types/">Data Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Data/">Data</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Degrees-To-Radians-Node/">Degrees To Radians Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Dielectric-Specular-Node/">Dielectric Specular Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Distance-Node/">Distance Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Dither-Node/">Dither Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Divide-Node/">Divide Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Dot-Product-Node/">Dot Product Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Edge/">Edge</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Ellipse-Node/">Ellipse Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Exponential-Node/">Exponential Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Flip-Node/">Flip Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Flipbook-Node/">Flipbook Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Floor-Node/">Floor Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Fog-Node/">Fog Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Fraction-Node/">Fraction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Fresnel-Effect-Node/">Fresnel Effect Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Getting-Started/">Getting Started with Shader Graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Gradient-Node/">Gradient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Gradient-Noise-Node/">Gradient Noise Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hue-Node/">Hue Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hyperbolic-Cosine-Node/">Hyperbolic Cosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hyperbolic-Sine-Node/">Hyperbolic Sine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hyperbolic-Tangent-Node/">Hyperbolic Tangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Input-Nodes/">Input Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Integer-Node/">Integer Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Inverse-Lerp-Node/">Inverse Lerp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Invert-Colors-Node/">Invert Colors Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Is-Front-Face/">Is Front Face Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Is-Infinite-Node/">Is Infinite Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Is-NaN-Node/">Is NaN Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Length-Node/">Length Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Lerp-Node/">Lerp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Log-Node/">Log Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Master-Node/">Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Master-Nodes/">Master Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Master-Preview/">Master Preview</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Math Nodes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#math-nodes">Math Nodes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#advanced">Advanced</a></li>
+        
+            <li><a class="toctree-l4" href="#basic">Basic</a></li>
+        
+            <li><a class="toctree-l4" href="#derivative">Derivative</a></li>
+        
+            <li><a class="toctree-l4" href="#interpolation">Interpolation</a></li>
+        
+            <li><a class="toctree-l4" href="#matrix">Matrix</a></li>
+        
+            <li><a class="toctree-l4" href="#range">Range</a></li>
+        
+            <li><a class="toctree-l4" href="#round">Round</a></li>
+        
+            <li><a class="toctree-l4" href="#trigonometry">Trigonometry</a></li>
+        
+            <li><a class="toctree-l4" href="#vector">Vector</a></li>
+        
+            <li><a class="toctree-l4" href="#wave">Wave</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-2x2-Node/">Matrix 2x2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-3x3-Node/">Matrix 3x3 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-4x4-Node/">Matrix 4x4 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-Construction-Node/">Matrix Construction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-Determinant-Node/">Matrix Determinant</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-Split-Node/">Matrix Split Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-Transpose-Node/">Matrix Transpose</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Maximum-Node/">Maximum Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Metal-Reflectance-Node/">Metal Reflectance Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Minimum-Node/">Minimum Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Modulo-Node/">Modulo Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Multiply-Node/">Multiply Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Nand-Node/">Nand Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Negate-Node/">Negate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Node-Library/">Node Library</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Node/">Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Noise-Sine-Wave-Node/">Noise Sine Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Blend-Node/">Normal Blend Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-From-Height-Node/">Normal From Height Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-From-Texture-Node/">Normal From Texture Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Reconstruct-Z-Node/">Normal Reconstruct Z Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Strength-Node/">Normal Strength Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Unpack-Node/">Normal Unpack Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Vector-Node/">Normal Vector Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normalize-Node/">Normalize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Not-Node/">Not Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Object-Node/">Object Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../One-Minus-Node/">One Minus Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Or-Node/">Or Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../PBR-Master-Node/">PBR Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Polar-Coordinates-Node/">Polar Coordinates Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Polygon-Node/">Polygon Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Port-Bindings/">Port Bindings</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Port/">Port</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Position-Node/">Position Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Posterize-Node/">Posterize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Power-Node/">Power Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Preview-Node/">Preview Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Procedural-Nodes/">Procedural Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Projection-Node/">Projection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Property-Types/">Property Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Radial-Shear-Node/">Radial Shear Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Radians-To-Degrees-Node/">Radians To Degrees Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Random-Range-Node/">Random Range Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reciprocal-Node/">Reciprocal Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reciprocal-Square-Root-Node/">Reciprocal Square Root Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rectangle-Node/">Rectangle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reflection-Node/">Reflection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reflection-Probe-Node/">Reflection Probe Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rejection-Node/">Rejection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Remap-Node/">Remap Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Replace-Color-Node/">Replace Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rotate-About-Axis-Node/">Rotate About Axis Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rotate-Node/">Rotate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Round-Node/">Round Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rounded-Rectangle-Node/">Rounded Rectangle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Cubemap-Node/">Sample Cubemap Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Gradient-Node/">Sample Gradient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Texture-2D-Array-Node/">Sample Texture 2D Array Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Texture-2D-LOD-Node/">Sample Texture 2D LOD Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Texture-2D-Node/">Sample Texture 2D Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Texture-3D-Node/">Sample Texture 3D Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sampler-State-Node/">Sampler State Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Saturate-Node/">Saturate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Saturation-Node/">Saturation Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sawtooth-Wave-Node/">Sawtooth Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Scene-Color-Node/">Scene Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Scene-Depth-Node/">Scene Depth Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Screen-Node/">Screen Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Screen-Position-Node/">Screen Position Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Scripting-API/">Scripting API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Shader-Graph-Asset/">Shader Graph Asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Shader-Graph-Window/">Shader Graoh Window</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Shader-Graph/">Shader Graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Shader-Stage/">Shader Stage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sign-Node/">Sign Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Simple-Noise-Node/">Simple Noise Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sine-Node/">Sine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Slider-Node/">Slider Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Smoothstep-Node/">Smoothstep Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sphere-Mask-Node/">Sphere Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Spherize-Node/">Spherize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Split-Node/">Split Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Square-Root-Node/">Square Root Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Square-Wave-Node/">Square Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Step-Node/">Step Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sub-graph-Asset/">Sub-graph Asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sub-graph-Node/">Sub-graph Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sub-graph/">Sub-graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Subtract-Node/">Subtract Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Swizzle-Node/">Swizzle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TableOfContents/">TableOfContents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Tangent-Node/">Tangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Tangent-Vector-Node/">Tangent Vector Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Texel-Size-Node/">Texel Size Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Texture-2D-Array-Asset-Node/">Texture 2D Array Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Texture-2D-Asset-Node/">Texture 2D Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Texture-3D-Asset-Node/">Texture 3D Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Tiling-And-Offset-Node/">Tiling And Offset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Time-Node/">Time Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Transform-Node/">Transform Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Transformation-Matrix-Node/">Transformation Matrix Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Triange-Wave-Node/">Triangle Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Triplanar-Node/">Triplanar Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Truncate-Node/">Truncate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Twirl-Node/">Twirl Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../UV-Node/">UV Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../UV-Nodes/">UV Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Unlit-Master-Node/">Unlit Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Utility-Nodes/">Utility Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vector-1-Node/">Vector 1 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vector-2-Node/">Vector 2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vector-3-Node/">Vector 3 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vector-4-Node/">Vector 4 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vertex-Color-Node/">Vertex Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../View-Direction-Node/">View Direction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Voronoi-Node/">Voronoi Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../White-Balance-Node/">White Balance Node</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Unity SRP Doc</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>ShaderGraph &raquo;</li>
+        
+      
+    
+    <li>Math Nodes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="math-nodes">Math Nodes</h1>
+<h2 id="advanced">Advanced</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../Absolute-Node/">Absolute</a></th>
+<th align="left"><a href="../Absolute-Node/">Exponential</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/AbsoluteNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/ExponentialNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the absolute value of input In.</td>
+<td align="left">Returns the exponential value of input In.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Length-Node/"><strong>Length</strong></a></td>
+<td align="left"><a href="../Log-Node/"><strong>Log</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/LengthNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/LogNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the length of input In.</td>
+<td align="left">Returns the logarithm of input In.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Modulo-Node/"><strong>Modulo</strong></a></td>
+<td align="left"><a href="../Negate-Node/"><strong>Negate</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/ModuloNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/NegateNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the remainder of input A divided by input B.</td>
+<td align="left">Returns the inverse value of input In.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Normalize-Node/"><strong>Normalize</strong></a></td>
+<td align="left"><a href="../Posterize-Node/"><strong>Posterize</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/NormalizeNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/PosterizeNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the normalized vector of input In.</td>
+<td align="left">Returns the input In converted into a number of values defined by input Steps.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Reciprocal-Node/"><strong>Reciprocal</strong></a></td>
+<td align="left"><a href="../Reciprocal-Square-Root-Node/"><strong>Reciprocal Square Root</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/ReciprocalNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/ReciprocalSquareRootNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the result of 1 divided by input In.</td>
+<td align="left">Returns the result of 1 divided by the square root of input In.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="basic">Basic</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../Add-Node/">Add</a></th>
+<th align="left"><a href="../Divide-Node/">Divide</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/AddNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/DivideNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the sum of the two input values.</td>
+<td align="left">Returns the result of input A divided by input B.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Multiply-Node/"><strong>Multiply</strong></a></td>
+<td align="left"><a href="../Power-Node/"><strong>Power</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/MultiplyNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/PowerNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the result of input A multiplied by input B.</td>
+<td align="left">Returns the result of input A to the power of input B.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Square-Root-Node/"><strong>Square Root</strong></a></td>
+<td align="left"><a href="../Subtract-Node/"><strong>Subtract</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/SquareRootNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/SubtractNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the square root of input In.</td>
+<td align="left">Returns the result of input A minus input B.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="derivative">Derivative</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../DDX-Node/">DDX</a></th>
+<th align="left"><a href="../DDXY-Node/">DDXY</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/DDXNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/DDXYNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the partial derivative with respect to the screen-space x-coordinate.</td>
+<td align="left">Returns the sum of both partial derivatives.</td>
+</tr>
+<tr>
+<td align="left"><a href="../DDY-Node/"><strong>DDY</strong></a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/DDYNodeThumb.png" /></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Returns the partial derivative with respect to the screen-space y-coordinate.</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="interpolation">Interpolation</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../Inverse-Lerp-Node/">Inverse Lerp</a></th>
+<th align="left"><a href="../Lerp-Node/">Lerp</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/InverseLerpNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/LerpNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the parameter that produces the interpolant specified by input T within the range of input A to input B.</td>
+<td align="left">Returns the result of linearly interpolating between input A and input B by input T.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Smoothstep-Node/"><strong>Smoothstep</strong></a></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/SmoothstepNodeThumb.png" /></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Returns the result of a smooth Hermite interpolation between 0 and 1, if input In is between inputs Edge1 and Edge2.</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="matrix">Matrix</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../Matrix-Construction-Node/">Matrix Construction</a></th>
+<th align="left"><a href="../Matrix-Determinant-Node/">Matrix Determinant</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/MatrixConstructionNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/MatrixDeterminantNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Constructs square matrices from the four input vectors M0, M1, M2 and M3.</td>
+<td align="left">Returns the determinant of the matrix defined by input In.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Matrix-Split-Node/"><strong>Matrix Split</strong></a></td>
+<td align="left"><a href="../Matrix-Transpose-Node/"><strong>Matrix Transpose</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/MatrixSplitNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/MatrixTransposeNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Splits a square matrix defined by input In into vectors.</td>
+<td align="left">Returns the transposed value of the matrix defined by input In.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="range">Range</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../Clamp-Node/">Clamp</a></th>
+<th align="left"><a href="../Fraction-Node/">Fraction</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/ClampNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/FractionNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the input In clamped between the minimum and maximum values defined by inputs Min and Max respectively.</td>
+<td align="left">Returns the fractional (or decimal) part of input In; which is greater than or equal to 0 and less than 1.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Maximum-Node/"><strong>Maximum</strong></a></td>
+<td align="left"><a href="../Minimum-Node/"><strong>Minimum</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/MaximumNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/MinimumNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the largest of the two inputs values A and B.</td>
+<td align="left">Returns the smallest of the two inputs values A and B.</td>
+</tr>
+<tr>
+<td align="left"><a href="../One-Minus-Node/"><strong>One Minus</strong></a></td>
+<td align="left"><a href="../Random-Range-Node/"><strong>Random Range</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/OneMinusNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/RandomRangeNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the result of input In subtracted from 1.</td>
+<td align="left">Returns a pseudo-random number that is between the minimum and maximum values defined by inputs Min and Max.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Remap-Node/"><strong>Remap</strong></a></td>
+<td align="left"><a href="../Saturate-Node/"><strong>Saturate</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/RemapNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/SaturateNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Remaps the value of input In from between the values of input Out Min Max to between the values of input In Min Max.</td>
+<td align="left">Returns the value of input In clamped between 0 and 1.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="round">Round</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../Ceiling-Node/">Ceiling</a></th>
+<th align="left"><a href="../Floor-Node/">Floor</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/CeilingNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/FloorNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the smallest integer value, or whole number, that is greater than or equal to the value of input In.</td>
+<td align="left">Returns the largest integer value, or whole number, that is less than or equal to the value of input In.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Round-Node/"><strong>Round</strong></a></td>
+<td align="left"><a href="../Sign-Node/"><strong>Sign</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/RoundNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/SignNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the value of input In rounded to the nearest integer, or whole number.</td>
+<td align="left">Returns -1 if the value of input In is less than zero, 0 if equal to zero and 1 if greater than zero.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Step-Node/"><strong>Step</strong></a></td>
+<td align="left"><a href="../Truncate-Node/"><strong>Truncate</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/StepNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/TruncateNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns 1 if the value of input In is greater than or equal to the value of input Edge, otherwise returns 0.</td>
+<td align="left">Returns the integer, or whole number, component of the value of input In.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="trigonometry">Trigonometry</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="Arccosine-Node">Arccosine</a></th>
+<th align="left"><a href="../Arcsine-Node/">Arcsine</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/ArccosineNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/ArcsineNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the arccosine of each component the input In as a vector of equal length.</td>
+<td align="left">Returns the arcsine of each component the input In as a vector of equal length.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Arctangent-Node/"><strong>Arctangent</strong></a></td>
+<td align="left"><a href="../Arctangent2-Node/"><strong>Arctangent2</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/ArctangentNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/Arctangent2NodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the arctangent of the value of input In. Each component should be within the range of -Pi/2 to Pi/2.</td>
+<td align="left">Returns the arctangent of the values of both input A and input B.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Cosine-Node/"><strong>Cosine</strong></a></td>
+<td align="left"><a href="../Degrees-To-Radians-Node/"><strong>Degrees to Radians</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/CosineNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/DegreesToRadiansNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the cosine of the value of input In.</td>
+<td align="left">Returns the value of input In converted from degrees to radians.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Hyperbolic-Cosine-Node/"><strong>Hyperbolic Cosine</strong></a></td>
+<td align="left"><a href="../Hyperbolic-Sine-Node/"><strong>Hyperbolic Sine</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/HyperbolicCosineNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/HyperbolicSineNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the hyperbolic cosine of input In.</td>
+<td align="left">Returns the hyperbolic sine of input In.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Hyperbolic-Tangent-Node/"><strong>Hyperbolic Tangent</strong></a></td>
+<td align="left"><a href="../Radians-To-Degrees-Node/"><strong>Radians to Degrees</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/HyperbolicTangentNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/RadiansToDegreesNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the hyperbolic tangent of input In.</td>
+<td align="left">Returns the value of input In converted from radians to degrees.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Sine-Node/"><strong>Sine</strong></a></td>
+<td align="left"><a href="../Tangent-Node/"><strong>Tangent</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/SineNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/TangentNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the sine of the value of input In.</td>
+<td align="left">Returns the tangent of the value of input In.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vector">Vector</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../Cross-Product-Node/">Cross Product</a></th>
+<th align="left"><a href="../Distance-Node/">Distance</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/CrossProductNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/DistanceNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the cross product of the values of the inputs A and B.</td>
+<td align="left">Returns the Euclidean distance between the values of the inputs A and B.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Dot-Product-Node/"><strong>Dot Product</strong></a></td>
+<td align="left"><a href="../Fresnel-Effect-Node/"><strong>Fresnel Effect</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/DotProductNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/FresnelEffectNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the dot product, or scalar product, of the values of the inputs A and B.</td>
+<td align="left">Fresnel Effect is the effect of differing reflectance on a surface depending on viewing angle, where as you approach the grazing angle more light is reflected.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Projection-Node/"><strong>Projection</strong></a></td>
+<td align="left"><a href="../Reflection-Node/"><strong>Reflection</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/ProjectionNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/ReflectionNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the result of projecting the value of input A onto a straight line parallel to the value of input B.</td>
+<td align="left">Returns a reflection vector using input In and a surface normal Normal.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Rejection-Node/"><strong>Rejection</strong></a></td>
+<td align="left"><a href="../Rotate-About-Axis-Node/"><strong>Rotate About Axis</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/RejectionNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/RotateAboutAxisNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the result of the projection of the value of  input A onto the plane orthogonal, or perpendicular, to the value of  input B.</td>
+<td align="left">Rotates the input vector In around the axis Axis by the value of Rotation.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Projection-Node/"><strong>Projection</strong></a></td>
+<td align="left"><a href="../Rejection-Node/"><strong>Rejection</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/ProjectionNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/RejectionNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the result of projecting the value of input A onto a straight line parallel to the value of input B.</td>
+<td align="left">Returns the result of the projection of the value of  input A onto the plane orthogonal, or perpendicular, to the value of  input B.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Sphere-Mask-Node/"><strong>Sphere Mask</strong></a></td>
+<td align="left"><a href="../Transform-Node/"><strong>Transform</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/SphereMaskNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/TransformNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Creates a sphere mask originating from input Center.</td>
+<td align="left">Returns the result of transforming the value of input In from one coordinate space to another.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wave">Wave</h2>
+<table>
+<thead>
+<tr>
+<th align="left"><a href="../Noise-Sine-Wave-Node/">Noise Sine Wave</a></th>
+<th align="left"><a href="../Sawtooth-Wave-Node/">Sawtooth Wave</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><img alt="Image" src="../images/NoiseSineWaveNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/SawtoothWaveNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Returns the sine of the value of input In. For variance, random noise is added to the amplitude of the sine wave.</td>
+<td align="left">Returns a sawtooth wave from the value of input In.</td>
+</tr>
+<tr>
+<td align="left"><a href="../Matrix-Split-Node/"><strong>Matrix Split</strong></a></td>
+<td align="left"><a href="../Matrix-Transpose-Node/"><strong>Matrix Transpose</strong></a></td>
+</tr>
+<tr>
+<td align="left"><img alt="Image" src="../images/MatrixSplitNodeThumb.png" /></td>
+<td align="left"><img alt="Image" src="../images/MatrixTransposeNodeThumb.png" /></td>
+</tr>
+<tr>
+<td align="left">Splits a square matrix defined by input In into vectors.</td>
+<td align="left">Returns the transposed value of the matrix defined by input In.</td>
+</tr>
+</tbody>
+</table>
+<p>Noise Sine Wave
+Sawtooth Wave
+Square Wavve
+Triangle Wave</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Matrix-2x2-Node/" class="btn btn-neutral float-right" title="Matrix 2x2 Node">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Master-Preview/" class="btn btn-neutral" title="Master Preview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Master-Preview/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Matrix-2x2-Node/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Texture 2D Array Asset Node - Unity SRP Doc</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Texture 2D Array Asset Node";
+    var mkdocs_page_input_path = "ShaderGraph/Texture-2D-Array-Asset-Node.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Unity SRP Doc</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">This is an unofficial Unity SRP Doc</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Core</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Core/ScriptableRenderPipeline/">Scriptable Render Pipeline</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">HDRP</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../HDRP/HDRenderPipeline/">High Definition Render Pipeline</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">LWRP</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../LWRP/">About the Lightweight Render Pipeline</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/TableOfContents/">TableOfContents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/autodesk-interactive-masked-shader/">Autodesk interactive masked shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/autodesk-interactive-shader/">Autodesk interactive shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/autodesk-interactive-transparent-shader/">Autodesk interactive transparent shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/baked-lit-shader/">Baked lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/camera-inspector/">Camera inspector</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/camera/">Camera</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/configuring-lwrp-for-use/">Configuring lwrp for use</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/creating-a-new-project-with-lwrp/">Creating a new project with lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/faq/">FAQ</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/forward-renderer/">Forward renderer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/getting-started-with-lwrp/">Getting started with lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/inside-lwrp/">Inside lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/installing-lwrp-into-an-existing-project/">Installing lwrp into an existing project</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/integration-with-post-processing/">Integration with post processing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/integration-with-terrain/">Integration with terrain</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/integrations-with-shader-graph/">Integrations with shader graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/light-inspector/">Light inspector</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lit-shader/">Lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lwrp-asset/">Lwrp asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lwrp-builtin-feature-comparison/">Lwrp builtin feature comparison</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/lwrp-internal-flowchart/">Lwrp internal flowchart</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/particles-lit-shader/">Particles lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/particles-simple-lit-shader/">Particles simple lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/particles-unlit-shader/">Particles unlit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/realtime-lighting-in-lwrp/">Realtime lighting in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/rendering-in-lwrp/">Rendering in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shader-stripping-keywords/">Shader stripping keywords</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shader-stripping/">Shader stripping</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shaders-in-lwrp/">Shaders in lwrp</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/shading-model/">Shading model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/simple-lit-shader/">Simple lit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/unlit-shader/">Unlit shader</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../LWRP/upgrading-your-shaders/">Upgrading your shaders</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ShaderGraph</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">Index</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Absolute-Node/">Absolute Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Add-Node/">Add Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../All-Node/">All Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Ambient-Node/">Ambient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../And-Node/">And Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Any-Node/">Any Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Arccosine-Node/">Arccosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Arcsine-Node/">Arcsine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Arctangent-Node/">Arctangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Arctangent2-Node/">Arctangent2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Artistic-Nodes/">Artistic Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Baked-GI-Node/">Baked GI Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Bitangent-Vector-Node/">Bitangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Blackboard/">Blackboard</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Blend-Node/">Blend Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Boolean-Node/">Boolean Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Branch-Node/">Branch Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Camera-Node/">Camera Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Ceiling-Node/">Ceiling Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Channel-Mask-Node/">Channel Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Channel-Mixer-Node/">Channel Mixer Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Channel-Nodes/">Channel Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Checkerboard-Node/">Checkerboard Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Clamp-Node/">Clamp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode-Port-Types/">CodeFunctionNode Port Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode.Binding/">CodeFunctionNode.Binding</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode.GetFunctionToConvert/">CodeFunctionNode.GetFunctionToConvert</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode.SlotAttribute/">CodeFunctionNode.SlotAttribute</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../CodeFunctionNode/">CodeFunctionNode</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Color-Mask-Node/">Color Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Color-Node/">Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Colorspace-Conversion-Node/">Colorspace Conversion Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Combine-Node/">Combine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Comparison-Node/">Comparison Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Constant-Node/">Constant Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Contrast-Node/">Contrast Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Cosine-Node/">Cosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Create-Node-Menu/">Create Node Menu</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Cross-Product-Node/">Cross Product Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Cubemap-Asset-Node/">Cubemap Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Custom-Nodes-With-CodeFunctionNode/">Custom Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../DDX-Node/">DDX Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../DDXY-Node/">DDXY Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../DDY-Node/">DDY Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Data-Types/">Data Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Data/">Data</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Degrees-To-Radians-Node/">Degrees To Radians Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Dielectric-Specular-Node/">Dielectric Specular Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Distance-Node/">Distance Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Dither-Node/">Dither Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Divide-Node/">Divide Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Dot-Product-Node/">Dot Product Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Edge/">Edge</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Ellipse-Node/">Ellipse Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Exponential-Node/">Exponential Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Flip-Node/">Flip Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Flipbook-Node/">Flipbook Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Floor-Node/">Floor Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Fog-Node/">Fog Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Fraction-Node/">Fraction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Fresnel-Effect-Node/">Fresnel Effect Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Getting-Started/">Getting Started with Shader Graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Gradient-Node/">Gradient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Gradient-Noise-Node/">Gradient Noise Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hue-Node/">Hue Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hyperbolic-Cosine-Node/">Hyperbolic Cosine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hyperbolic-Sine-Node/">Hyperbolic Sine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Hyperbolic-Tangent-Node/">Hyperbolic Tangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Input-Nodes/">Input Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Integer-Node/">Integer Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Inverse-Lerp-Node/">Inverse Lerp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Invert-Colors-Node/">Invert Colors Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Is-Front-Face/">Is Front Face Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Is-Infinite-Node/">Is Infinite Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Is-NaN-Node/">Is NaN Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Length-Node/">Length Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Lerp-Node/">Lerp Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Log-Node/">Log Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Master-Node/">Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Master-Nodes/">Master Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Master-Preview/">Master Preview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Math-Nodes/">Math Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-2x2-Node/">Matrix 2x2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-3x3-Node/">Matrix 3x3 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-4x4-Node/">Matrix 4x4 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-Construction-Node/">Matrix Construction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-Determinant-Node/">Matrix Determinant</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-Split-Node/">Matrix Split Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Matrix-Transpose-Node/">Matrix Transpose</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Maximum-Node/">Maximum Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Metal-Reflectance-Node/">Metal Reflectance Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Minimum-Node/">Minimum Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Modulo-Node/">Modulo Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Multiply-Node/">Multiply Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Nand-Node/">Nand Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Negate-Node/">Negate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Node-Library/">Node Library</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Node/">Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Noise-Sine-Wave-Node/">Noise Sine Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Blend-Node/">Normal Blend Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-From-Height-Node/">Normal From Height Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-From-Texture-Node/">Normal From Texture Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Reconstruct-Z-Node/">Normal Reconstruct Z Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Strength-Node/">Normal Strength Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Unpack-Node/">Normal Unpack Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normal-Vector-Node/">Normal Vector Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Normalize-Node/">Normalize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Not-Node/">Not Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Object-Node/">Object Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../One-Minus-Node/">One Minus Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Or-Node/">Or Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../PBR-Master-Node/">PBR Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Polar-Coordinates-Node/">Polar Coordinates Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Polygon-Node/">Polygon Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Port-Bindings/">Port Bindings</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Port/">Port</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Position-Node/">Position Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Posterize-Node/">Posterize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Power-Node/">Power Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Preview-Node/">Preview Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Procedural-Nodes/">Procedural Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Projection-Node/">Projection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Property-Types/">Property Types</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Radial-Shear-Node/">Radial Shear Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Radians-To-Degrees-Node/">Radians To Degrees Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Random-Range-Node/">Random Range Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reciprocal-Node/">Reciprocal Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reciprocal-Square-Root-Node/">Reciprocal Square Root Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rectangle-Node/">Rectangle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reflection-Node/">Reflection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Reflection-Probe-Node/">Reflection Probe Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rejection-Node/">Rejection Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Remap-Node/">Remap Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Replace-Color-Node/">Replace Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rotate-About-Axis-Node/">Rotate About Axis Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rotate-Node/">Rotate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Round-Node/">Round Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Rounded-Rectangle-Node/">Rounded Rectangle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Cubemap-Node/">Sample Cubemap Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Gradient-Node/">Sample Gradient Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Texture-2D-Array-Node/">Sample Texture 2D Array Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Texture-2D-LOD-Node/">Sample Texture 2D LOD Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Texture-2D-Node/">Sample Texture 2D Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sample-Texture-3D-Node/">Sample Texture 3D Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sampler-State-Node/">Sampler State Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Saturate-Node/">Saturate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Saturation-Node/">Saturation Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sawtooth-Wave-Node/">Sawtooth Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Scene-Color-Node/">Scene Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Scene-Depth-Node/">Scene Depth Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Screen-Node/">Screen Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Screen-Position-Node/">Screen Position Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Scripting-API/">Scripting API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Shader-Graph-Asset/">Shader Graph Asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Shader-Graph-Window/">Shader Graoh Window</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Shader-Graph/">Shader Graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Shader-Stage/">Shader Stage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sign-Node/">Sign Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Simple-Noise-Node/">Simple Noise Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sine-Node/">Sine Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Slider-Node/">Slider Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Smoothstep-Node/">Smoothstep Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sphere-Mask-Node/">Sphere Mask Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Spherize-Node/">Spherize Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Split-Node/">Split Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Square-Root-Node/">Square Root Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Square-Wave-Node/">Square Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Step-Node/">Step Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sub-graph-Asset/">Sub-graph Asset</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sub-graph-Node/">Sub-graph Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Sub-graph/">Sub-graph</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Subtract-Node/">Subtract Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Swizzle-Node/">Swizzle Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TableOfContents/">TableOfContents</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Tangent-Node/">Tangent Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Tangent-Vector-Node/">Tangent Vector Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Texel-Size-Node/">Texel Size Node</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Texture 2D Array Asset Node</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#texture-2d-array-asset-node">Texture 2D Array Asset Node</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#description">Description</a></li>
+        
+            <li><a class="toctree-l4" href="#ports">Ports</a></li>
+        
+            <li><a class="toctree-l4" href="#controls">Controls</a></li>
+        
+            <li><a class="toctree-l4" href="#generated-code-example">Generated Code Example</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Texture-2D-Asset-Node/">Texture 2D Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Texture-3D-Asset-Node/">Texture 3D Asset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Tiling-And-Offset-Node/">Tiling And Offset Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Time-Node/">Time Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Transform-Node/">Transform Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Transformation-Matrix-Node/">Transformation Matrix Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Triange-Wave-Node/">Triangle Wave Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Triplanar-Node/">Triplanar Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Truncate-Node/">Truncate Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Twirl-Node/">Twirl Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../UV-Node/">UV Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../UV-Nodes/">UV Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Unlit-Master-Node/">Unlit Master Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Utility-Nodes/">Utility Nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vector-1-Node/">Vector 1 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vector-2-Node/">Vector 2 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vector-3-Node/">Vector 3 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vector-4-Node/">Vector 4 Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Vertex-Color-Node/">Vertex Color Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../View-Direction-Node/">View Direction Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../Voronoi-Node/">Voronoi Node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../White-Balance-Node/">White Balance Node</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Unity SRP Doc</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>ShaderGraph &raquo;</li>
+        
+      
+    
+    <li>Texture 2D Array Asset Node</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="texture-2d-array-asset-node">Texture 2D Array Asset Node</h1>
+<h2 id="description">Description</h2>
+<p>Defines a constant <strong>Texture 2D Array Asset</strong> for use in the shader. To sample the <strong>Texture 2D Array Asset</strong> it should be used in conjunction with a <a href="../Sample-Texture-2D-Array-Node/">Sample Texture 2D Array Node</a>. When using a separate <strong>Texture 2D Array Asset Node</strong>, you can sample a <strong>Texture 2D Array</strong> twice, with different parameters, without defining the <strong>Texture 2D Array</strong> itself twice.</p>
+<h2 id="ports">Ports</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Direction</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Out</td>
+<td align="left">Output</td>
+<td align="left">Texture 2D Array</td>
+<td align="left">Output value</td>
+</tr>
+</tbody>
+</table>
+<h2 id="controls">Controls</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Type</th>
+<th align="left">Options</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="left">Object Field (Texture 2D Array)</td>
+<td align="left"></td>
+<td align="left">Defines the texture 2D array asset from the project.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="generated-code-example">Generated Code Example</h2>
+<p>The following example code represents one possible outcome of this node.</p>
+<pre><code>TEXTURE2D_ARRAY(_Texture2DArrayAsset); 
+SAMPLER(sampler_Texture2DArrayAsset);
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Texture-2D-Asset-Node/" class="btn btn-neutral float-right" title="Texture 2D Asset Node">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Texel-Size-Node/" class="btn btn-neutral" title="Texel Size Node"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Texel-Size-Node/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Texture-2D-Asset-Node/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
